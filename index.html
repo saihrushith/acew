@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACE Workforce Solutions | Digital-First Recruitment Agency in Hyderabad</title>
+  <meta name="description" content="Specialist recruitment agency in Hyderabad helping businesses find and hire technical, skilled and semi-skilled professionals across India for manufacturing, automotive, engineering, and logistics.">
+  
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- React 18 & Babel for Modern Dynamic React UI -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <!-- React Root Container -->
+  <div id="root"></div>
+
+  <!-- React Application -->
+  <script type="text/babel">
+    const { useState, useEffect, useMemo } = React;
+
+    const WHATSAPP_NUMBER = "919010906074";
+
+    // --- SPECIALISATIONS DATA ---
+    const specialisationsData = [
+      {
+        id: "engineering",
+        title: "Engineering & Technical Recruitment",
+        subtitle: "Core design, production & plant engineering",
+        icon: "fa-compass-drafting",
+        colorClass: "card-blue",
+        roles: [
+          "Civil Engineers", "Mechanical Engineers", "Electrical Engineers",
+          "Electronics Engineers", "Production Engineers", "Manufacturing Engineers"
+        ]
+      },
+      {
+        id: "cnc",
+        title: "CNC & Precision Machining Recruitment",
+        subtitle: "Multi-axis machining, programming & tool room",
+        icon: "fa-microchip",
+        colorClass: "card-gold",
+        roles: [
+          "CNC Operators", "CNC Machinists", "CNC Programmers",
+          "VMC Operators", "HMC Operators", "CNC Setters",
+          "Machine Setters", "Precision Machinists", "Tool Room Technicians"
+        ]
+      },
+      {
+        id: "maintenance",
+        title: "Maintenance & Electrical Recruitment",
+        subtitle: "Preventive, breakdown & plant equipment uptime",
+        icon: "fa-wrench",
+        colorClass: "card-green",
+        roles: [
+          "Mechanical Maintenance Technicians", "Industrial Maintenance Technicians",
+          "Electrical Technicians", "Electrical Maintenance Technicians",
+          "Maintenance Fitters", "Equipment Technicians"
+        ]
+      },
+      {
+        id: "welding",
+        title: "Welding & Fabrication Recruitment",
+        subtitle: "Precision jointing, heavy structural & pipe work",
+        icon: "fa-fire-burner",
+        colorClass: "card-red",
+        roles: [
+          "TIG Welders", "MIG Welders", "Arc Welders",
+          "Fabricators", "Structural Welders", "Pipe Welders",
+          "Welding Technicians", "Mechanical Fitters"
+        ]
+      },
+      {
+        id: "production",
+        title: "Production & Assembly Recruitment",
+        subtitle: "High-efficiency line operations & processes",
+        icon: "fa-industry",
+        colorClass: "card-purple",
+        roles: [
+          "Production Operators", "Machine Operators", "Production Technicians",
+          "Assembly Workers", "Line Operators", "Process Operators"
+        ]
+      },
+      {
+        id: "quality",
+        title: "Quality & Inspection Recruitment",
+        subtitle: "Metrology, non-destructive testing & compliance",
+        icon: "fa-magnifying-glass-chart",
+        colorClass: "card-teal",
+        roles: [
+          "QC Inspectors", "Quality Inspectors", "Quality Technicians",
+          "Inspection Technicians", "CMM Operators", "NDT Technicians"
+        ]
+      },
+      {
+        id: "warehouse",
+        title: "Warehouse & Logistics Recruitment",
+        subtitle: "Material handling, inventory control & dispatch",
+        icon: "fa-dolly",
+        colorClass: "card-orange",
+        roles: [
+          "Warehouse Associates", "Forklift Operators", "Material Handlers",
+          "Pickers & Packers", "Storekeepers", "Inventory Staff",
+          "Dispatch Staff", "Warehouse Supervisors"
+        ]
+      }
+    ];
+
+    // --- INDUSTRIES DATA ---
+    const industriesData = [
+      {
+        title: "Automotive & Auto Components",
+        icon: "fa-car-side",
+        color: "var(--accent-red)",
+        desc: "Recruitment for production, CNC machining, maintenance, quality, engineering, welding and assembly roles."
+      },
+      {
+        title: "Precision & Industrial Manufacturing",
+        icon: "fa-gear",
+        color: "var(--primary-color)",
+        desc: "Recruiting machinists, machine operators, technicians, production professionals, maintenance talent and quality specialists."
+      },
+      {
+        title: "Engineering & Machinery",
+        icon: "fa-screwdriver-wrench",
+        color: "#0d475a",
+        desc: "Connecting machinery and engineering businesses with engineers, technicians, machinists, fitters, welders and assembly professionals."
+      },
+      {
+        title: "Industrial Equipment & Fabrication",
+        icon: "fa-industry",
+        color: "#b45309",
+        desc: "Sourcing welders, fabricators, fitters, machinists, maintenance technicians and engineering professionals."
+      },
+      {
+        title: "Aerospace & Defence Suppliers",
+        icon: "fa-jet-fighter",
+        color: "#4338ca",
+        desc: "Supporting precision manufacturing and engineering businesses with technical, machining, quality, inspection and skilled talent."
+      },
+      {
+        title: "Warehouse & Logistics",
+        icon: "fa-boxes-packing",
+        color: "#047857",
+        desc: "Recruiting warehouse, inventory, material-handling, stores, picking, packing and dispatch professionals."
+      }
+    ];
+
+    // --- 7 STEPS PROCESS DATA ---
+    const processSteps = [
+      {
+        step: 1,
+        title: "Understand the Requirement",
+        desc: "We first understand what the employer actually needs.",
+        pills: ["Role", "Skills", "Experience", "Industry", "Location", "Salary", "Shift", "Availability", "Joining Timeline"],
+        icon: "fa-clipboard-list"
+      },
+      {
+        step: 2,
+        title: "Define the Candidate Profile",
+        desc: "We translate the hiring requirement into a clear candidate profile.",
+        pills: ["Who should we target?", "Where are they likely to be?", "What experience should they have?", "What makes them suitable?"],
+        icon: "fa-id-card-clip"
+      },
+      {
+        step: 3,
+        title: "Source Talent Across India",
+        desc: "Hyderabad is our hiring market, but we don't restrict candidate sourcing to Hyderabad.",
+        pills: ["Digital Candidate Acquisition", "Proactive Candidate Sourcing", "Recruitment Channels", "Candidate Networks"],
+        icon: "fa-satellite-dish"
+      },
+      {
+        step: 4,
+        title: "Engage Candidates",
+        desc: "The right candidate may not be actively applying for jobs. Some are employed, considering a move, or outside Hyderabad. We communicate the opportunity and assess interest, availability, and willingness to relocate.",
+        pills: [],
+        icon: "fa-comments"
+      },
+      {
+        step: 5,
+        title: "Screen for Relevance",
+        desc: "Candidates are evaluated against the specific position requirements:",
+        pills: ["Skills", "Relevant Experience", "Industry Exposure", "Technical Background", "Location / Relocation", "Notice Period", "Salary Expectations", "Shift Requirements", "Overall Role Fit"],
+        icon: "fa-filter"
+      },
+      {
+        step: 6,
+        title: "Shortlist Relevant Candidates",
+        desc: "We don't aim to overwhelm employers with CVs. We aim to create a shortlist worth reviewing.",
+        pills: [],
+        icon: "fa-file-circle-check"
+      },
+      {
+        step: 7,
+        title: "Coordinate the Hiring Process",
+        desc: "We support candidate and employer communication through:",
+        pills: ["Interview →", "Selection →", "Offer →", "Joining"],
+        note: "Recruitment doesn't stop when a CV is submitted.",
+        icon: "fa-handshake-simple"
+      }
+    ];
+
+    // --- WHY CHOOSE ACE (7 PILLARS) ---
+    const whyAcePillars = [
+      {
+        icon: "fa-crosshairs",
+        title: "Specialist Recruitment Focus",
+        desc: "We concentrate on technical, skilled and semi-skilled recruitment rather than trying to recruit every role across every industry."
+      },
+      {
+        icon: "fa-city",
+        title: "Hyderabad Market Focus",
+        desc: "Our recruitment service is built around businesses hiring in Hyderabad."
+      },
+      {
+        icon: "fa-earth-asia",
+        title: "India-Wide Candidate Sourcing",
+        desc: "We expand the search beyond Hyderabad when the local talent pool isn't enough."
+      },
+      {
+        icon: "fa-bolt",
+        title: "Digital-First Candidate Acquisition",
+        desc: "We don't depend entirely on candidates finding and applying to job advertisements. We use digital channels to actively reach relevant talent."
+      },
+      {
+        icon: "fa-clipboard-check",
+        title: "Requirement-Based Screening",
+        desc: "We look beyond job titles and evaluate candidates against the actual requirements of the position."
+      },
+      {
+        icon: "fa-list-check",
+        title: "Relevant Shortlists",
+        desc: "The objective isn't to send the largest number of resumes. It's to identify candidates who are worth interviewing."
+      },
+      {
+        icon: "fa-user-check",
+        title: "Candidate Follow-Through",
+        desc: "We maintain communication through the hiring process to help reduce avoidable candidate drop-off."
+      }
+    ];
+
+    // --- PROBLEMS ACE SOLVES ---
+    const problemsData = [
+      {
+        quote: "We're not getting enough relevant candidates.",
+        solution: "We expand sourcing beyond Hyderabad and reach candidates across India."
+      },
+      {
+        quote: "We're receiving too many irrelevant applications.",
+        solution: "We focus the candidate search around the actual requirements of the position."
+      },
+      {
+        quote: "This role requires very specific skills.",
+        solution: "We build the search around the technical and practical experience required."
+      },
+      {
+        quote: "Our HR team doesn't have enough time to source candidates.",
+        solution: "We provide additional recruitment capacity through proactive candidate sourcing."
+      },
+      {
+        quote: "We've been trying to fill this position for weeks.",
+        solution: "We create an additional sourcing channel to reach candidates who may not have entered the existing recruitment funnel."
+      },
+      {
+        quote: "We keep hiring the same roles.",
+        solution: "We can build focused candidate pipelines around recurring recruitment requirements."
+      }
+    ];
+
+    // --- FAQS DATA ---
+    const faqsData = [
+      {
+        q: "What does ACE Workforce Solutions do?",
+        a: "ACE Workforce Solutions is a specialist recruitment agency in Hyderabad that helps businesses hire technical, skilled and semi-skilled talent."
+      },
+      {
+        q: "Where does ACE source candidates?",
+        a: "ACE focuses on Hyderabad employers while sourcing candidates across India, including candidates who are willing to relocate to Hyderabad."
+      },
+      {
+        q: "What roles does ACE recruit?",
+        a: "ACE recruits engineers, CNC operators and machinists, maintenance technicians, electrical technicians, welders, fabricators, production professionals, quality inspectors and warehouse/logistics professionals."
+      },
+      {
+        q: "Which industries does ACE serve?",
+        a: "ACE focuses on automotive and auto components, precision and industrial manufacturing, engineering and machinery, industrial equipment and fabrication, aerospace and defence suppliers, and warehouse and logistics businesses."
+      },
+      {
+        q: "Does ACE provide staffing or payroll services?",
+        a: "ACE's current service focus is recruitment. We do not position our current offering as contract staffing, payroll outsourcing or manpower supply."
+      },
+      {
+        q: "Does ACE recruit only local Hyderabad candidates?",
+        a: "No. ACE can source suitable candidates from across India for positions based in Hyderabad."
+      },
+      {
+        q: "Can ACE recruit for multiple positions?",
+        a: "Yes. Candidate sourcing can be structured for individual vacancies, multiple openings and recurring recruitment requirements."
+      }
+    ];
+
+    // ==========================================
+    // MAIN REACT APP COMPONENT
+    // ==========================================
+    function App() {
+      const [isScrolled, setIsScrolled] = useState(false);
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      
+      // Modals State
+      const [showEmployerModal, setShowEmployerModal] = useState(false);
+      const [showCandidateModal, setShowCandidateModal] = useState(false);
+      
+      // Specialisation Filter State
+      const [activeCategory, setActiveCategory] = useState("all");
+      const [searchTerm, setSearchTerm] = useState("");
+      
+      // FAQ Accordion Active Index
+      const [activeFaqIndex, setActiveFaqIndex] = useState(0);
+
+      // Toast State
+      const [toast, setToast] = useState({ show: false, title: "", message: "" });
+
+      useEffect(() => {
+        const handleScroll = () => {
+          setIsScrolled(window.scrollY > 40);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+      }, []);
+
+      const showNotification = (title, message) => {
+        setToast({ show: true, title, message });
+        setTimeout(() => {
+          setToast({ show: false, title: "", message: "" });
+        }, 5000);
+      };
+
+      // --- WHATSAPP REDIRECT HANDLER FOR EMPLOYERS ---
+      const handleEmployerSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.empName.value.trim();
+        const company = form.empCompany.value.trim();
+        const email = form.empEmail.value.trim();
+        const phone = form.empPhone.value.trim();
+        const role = form.empRole.value;
+        const count = form.empCount.value.trim();
+        const details = form.empDetails.value.trim();
+
+        const message = 
+`*New Hiring Requirement - ACE Workforce Solutions*
+----------------------------------------
+👤 *Contact Person:* ${name}
+🏢 *Company Name:* ${company}
+📧 *Email:* ${email}
+📱 *Phone / WhatsApp:* ${phone}
+💼 *Role Category:* ${role}
+👥 *Number of Openings:* ${count}
+⚙️ *Skills, Machinery & Experience:*
+${details}
+📍 *Hiring Location:* Hyderabad
+----------------------------------------
+_Submitted via ACE Workforce Digital Portal_`;
+
+        setShowEmployerModal(false);
+        showNotification("Redirecting to WhatsApp...", `Opening WhatsApp chat with ACE Workforce team for ${company}`);
+
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        
+        setTimeout(() => {
+          window.open(whatsappUrl, "_blank");
+        }, 600);
+      };
+
+      // --- WHATSAPP REDIRECT HANDLER FOR CANDIDATES ---
+      const handleCandidateSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.candName.value.trim();
+        const phone = form.candPhone.value.trim();
+        const role = form.candRole.value.trim();
+        const exp = form.candExp.value.trim();
+        const city = form.candCity.value.trim();
+        const relocate = form.candRelocate.value;
+        const note = form.candNote.value.trim();
+
+        const message = 
+`*New Candidate Registration - ACE Workforce Solutions*
+----------------------------------------
+👤 *Candidate Name:* ${name}
+📱 *Phone / WhatsApp:* ${phone}
+💼 *Primary Skill / Role:* ${role}
+⏳ *Total Experience:* ${exp} Years
+🏙️ *Current Location:* ${city}
+📍 *Hyderabad Relocation:* ${relocate}
+📝 *Machines Handled / Key Skills:*
+${note || 'N/A'}
+----------------------------------------
+_Submitted via ACE Candidate Portal_`;
+
+        setShowCandidateModal(false);
+        showNotification("Profile Recorded!", `Connecting ${name} directly to our Hyderabad recruitment desk via WhatsApp.`);
+
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        
+        setTimeout(() => {
+          window.open(whatsappUrl, "_blank");
+        }, 600);
+      };
+
+      // Filtered Specialisations
+      const filteredSpecialisations = useMemo(() => {
+        const query = searchTerm.toLowerCase().trim();
+        return specialisationsData.filter(item => {
+          const matchesCategory = activeCategory === "all" || item.id === activeCategory;
+          if (!matchesCategory) return false;
+          if (!query) return true;
+
+          const inTitle = item.title.toLowerCase().includes(query);
+          const inSubtitle = item.subtitle.toLowerCase().includes(query);
+          const inRoles = item.roles.some(r => r.toLowerCase().includes(query));
+          return inTitle || inSubtitle || inRoles;
+        });
+      }, [activeCategory, searchTerm]);
+
+      return (
+        <div>
+          {/* ==========================================
+               NAVBAR
+               ========================================== */}
+          <header className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+            <div className="container nav-container">
+              <a href="#" className="logo-wrap">
+                <div className="logo-badge">A</div>
+                <div className="logo-text">
+                  <span className="logo-title">ACE Workforce</span>
+                  <span className="logo-sub">Workforce Solutions</span>
+                </div>
+              </a>
+
+              <nav className={`nav-links ${mobileMenuOpen ? "active" : ""}`}>
+                <a href="#who-we-are" onClick={() => setMobileMenuOpen(false)}>Who We Are</a>
+                <a href="#what-we-do" onClick={() => setMobileMenuOpen(false)}>Specialisations</a>
+                <a href="#industries" onClick={() => setMobileMenuOpen(false)}>Industries</a>
+                <a href="#how-we-recruit" onClick={() => setMobileMenuOpen(false)}>Process</a>
+                <a href="#why-ace" onClick={() => setMobileMenuOpen(false)}>Why ACE</a>
+                <a href="#comparison" onClick={() => setMobileMenuOpen(false)}>Our Edge</a>
+                <a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
+              </nav>
+
+              <div className="nav-actions">
+                <button 
+                  className="btn btn-sm btn-outline-dark" 
+                  onClick={() => setShowCandidateModal(true)}
+                  title="Submit Profile for Hyderabad roles"
+                >
+                  <i className="fa-solid fa-user"></i> Candidates
+                </button>
+                <button 
+                  className="btn btn-sm btn-gold" 
+                  onClick={() => setShowEmployerModal(true)}
+                  title="Submit hiring requirement"
+                >
+                  <i className="fa-solid fa-briefcase"></i> Hire Talent
+                </button>
+              </div>
+
+              <button 
+                className="mobile-toggle" 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+              </button>
+            </div>
+          </header>
+
+          {/* ==========================================
+               HERO SECTION
+               ========================================== */}
+          <section className="hero" id="hero">
+            <div className="hero-ambient-blob blob-1"></div>
+            <div className="hero-ambient-blob blob-2"></div>
+            
+            <div className="container hero-container">
+              {/* Floating Squircles Cards */}
+              <div className="hero-card card-tl" title="Verified CNC Machinist">
+                <img src="assets/hero_profile_man_1786196821858.png" alt="CNC Machinist" />
+                <div className="card-info">
+                  <span className="candidate-name">Rajesh Kumar</span>
+                  <span className="candidate-role">Senior CNC Setter</span>
+                  <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Pune → Hyderabad</span>
+                </div>
+              </div>
+
+              <div className="hero-card card-bl" title="Verified Welding Specialist">
+                <img src="assets/office_team_1786196836796.png" alt="Industrial Team" />
+                <div className="card-info">
+                  <span className="candidate-name">Arun Verma</span>
+                  <span className="candidate-role">TIG / MIG Fabricator</span>
+                  <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Chennai → Hyderabad</span>
+                </div>
+              </div>
+
+              <div className="hero-content">
+                <span className="section-tag red">
+                  <i className="fa-solid fa-bolt"></i> Digital-First Recruitment Agency in Hyderabad
+                </span>
+                
+                <h1>
+                  Hyderabad Hiring. <br />
+                  <span className="highlight">Nationwide Talent Sourcing.</span>
+                </h1>
+                
+                <p className="lead-text">
+                  <strong>ACE Workforce Solutions</strong> is a specialist recruitment agency in Hyderabad helping businesses find and hire <strong>technical, skilled and semi-skilled professionals</strong> for manufacturing, automotive, engineering, industrial, aerospace &amp; defence, and warehouse &amp; logistics roles.
+                </p>
+                
+                <p>
+                  We source suitable candidates across India and use a combination of <em>digital-first candidate acquisition</em>, <em>proactive sourcing</em> and <em>structured screening</em> to help employers find relevant talent for difficult-to-fill, critical and recurring positions.
+                </p>
+                
+                <div className="hero-buttons">
+                  <button className="btn btn-lg btn-emerald" onClick={() => setShowEmployerModal(true)}>
+                    <i className="fa-solid fa-user-plus"></i> Hire Talent &rarr;
+                  </button>
+                  <button className="btn btn-lg btn-outline-dark" onClick={() => setShowEmployerModal(true)}>
+                    <i className="fa-solid fa-file-invoice"></i> Submit a Hiring Requirement &rarr;
+                  </button>
+                </div>
+              </div>
+
+              <div className="hero-card card-tr" title="Precision Quality Inspector">
+                <img src="assets/working_laptop_1786196849974.png" alt="Technical Recruiter" />
+                <div className="card-info">
+                  <span className="candidate-name">Sunita Rao</span>
+                  <span className="candidate-role">CMM / QC Inspector</span>
+                  <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Bangalore → Hyderabad</span>
+                </div>
+              </div>
+
+              <div className="hero-card card-br" title="Maintenance Engineer">
+                <img src="assets/hero_profile_man_1786196821858.png" alt="Industrial Engineer" />
+                <div className="card-info">
+                  <span className="candidate-name">Vikram Joshi</span>
+                  <span className="candidate-role">Electrical Maintenance</span>
+                  <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Gujarat → Hyderabad</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Performance Stats Banner */}
+            <div className="container">
+              <div className="hero-stats-banner">
+                <div className="stat-item">
+                  <div className="stat-icon-wrap"><i className="fa-solid fa-users-gear"></i></div>
+                  <div>
+                    <div className="stat-number">100%</div>
+                    <div className="stat-label">Industrial &amp; Technical Focus</div>
+                  </div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-icon-wrap"><i className="fa-solid fa-map-location-dot"></i></div>
+                  <div>
+                    <div className="stat-number">All-India</div>
+                    <div className="stat-label">Nationwide Sourcing Engine</div>
+                  </div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-icon-wrap"><i className="fa-solid fa-clipboard-check"></i></div>
+                  <div>
+                    <div className="stat-number">7-Stage</div>
+                    <div className="stat-label">Structured Precision Screening</div>
+                  </div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-icon-wrap"><i className="fa-solid fa-city"></i></div>
+                  <div>
+                    <div className="stat-number">Hyderabad</div>
+                    <div className="stat-label">Specialist Employer Hub</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               WHO WE ARE
+               ========================================== */}
+          <section className="section-padding bg-light" id="who-we-are">
+            <div className="container">
+              <div className="who-we-are-container">
+                <div className="who-content">
+                  <span className="section-tag gold">
+                    <i className="fa-solid fa-award"></i> Who We Are
+                  </span>
+                  <h2>A Specialist Recruitment Partner for Hyderabad Businesses</h2>
+                  
+                  <p>
+                    <strong>ACE Workforce Solutions</strong> is a Hyderabad-focused recruitment company specialising in <strong>technical, skilled and semi-skilled talent</strong>.
+                  </p>
+                  <p>
+                    We work with businesses where hiring the right person requires more than simply publishing a job vacancy.
+                  </p>
+
+                  <div className="contrast-cards">
+                    <div className="contrast-card">
+                      <div className="contrast-icon"><i className="fa-solid fa-gears"></i></div>
+                      <div className="contrast-text">A CNC machinist needs different skills from a production operator.</div>
+                    </div>
+                    <div className="contrast-card">
+                      <div className="contrast-icon"><i className="fa-solid fa-bolt-lightning"></i></div>
+                      <div className="contrast-text">A maintenance technician needs a different background from an electrical engineer.</div>
+                    </div>
+                    <div className="contrast-card">
+                      <div className="contrast-icon"><i className="fa-solid fa-fire"></i></div>
+                      <div className="contrast-text">A welder needs different practical experience from a quality inspector.</div>
+                    </div>
+                  </div>
+
+                  <p className="difference-punchline">We understand the difference.</p>
+
+                  <p>
+                    Our recruitment focus covers the people who keep industrial businesses operating—from engineers and technicians to machinists, welders, production professionals, quality specialists and warehouse talent.
+                  </p>
+
+                  <div style={{ background: "#ffffff", padding: "1.25rem 1.5rem", borderRadius: "var(--border-radius)", borderLeft: "4px solid var(--primary-color)", marginTop: "1.5rem", boxShadow: "var(--card-shadow)" }}>
+                    <p style={{ margin: 0, fontWeight: 600, color: "var(--primary-color)" }}>
+                      <i className="fa-solid fa-crosshairs red-text"></i> Our client market is <strong>Hyderabad</strong>. Our candidate search extends across <strong>India</strong>.
+                    </p>
+                    <p style={{ margin: "0.4rem 0 0", color: "var(--accent-red)", fontWeight: 700, fontSize: "1.05rem" }}>
+                      “Your hiring requirement may be local. Your talent search doesn't have to be.”
+                    </p>
+                  </div>
+                </div>
+
+                <div className="who-visual-box">
+                  <div className="who-image-main">
+                    <img src="assets/office_team_1786196836796.png" alt="Industrial Recruitment Experts Hyderabad" />
+                  </div>
+                  <div className="who-floating-badge">
+                    <h4><i className="fa-solid fa-shield-halved"></i> Precision Fit Guaranteed</h4>
+                    <p>We evaluate actual machine experience, GD&amp;T understanding, tolerance handling, and practical shop floor competence.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               WHAT WE DO (SPECIALISATIONS)
+               ========================================== */}
+          <section className="section-padding" id="what-we-do">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "800px", margin: "0 auto" }}>
+                <span className="section-tag teal">
+                  <i className="fa-solid fa-cubes-stacked"></i> What We Do
+                </span>
+                <h2>Specialist Recruitment for Technical, Skilled &amp; Semi-Skilled Roles</h2>
+                <p className="lead-text">
+                  ACE helps Hyderabad employers identify, attract, screen and shortlist candidates for roles across industrial and operational environments.
+                </p>
+              </div>
+
+              {/* Dynamic React Search & Category Tabs */}
+              <div className="spec-filter-wrapper">
+                <div className="spec-search-bar">
+                  <i className="fa-solid fa-magnifying-glass search-icon-fixed"></i>
+                  <input 
+                    type="text" 
+                    className="spec-search-input" 
+                    placeholder="Search roles (e.g. CNC, VMC, TIG, CMM, Maintenance, Forklift)..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                  {searchTerm && (
+                    <button 
+                      onClick={() => setSearchTerm("")}
+                      style={{ position: "absolute", right: "15px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "var(--text-light)" }}
+                    >
+                      &times;
+                    </button>
+                  )}
+                </div>
+
+                <div className="spec-tabs">
+                  <button 
+                    className={`spec-tab-btn ${activeCategory === "all" ? "active" : ""}`}
+                    onClick={() => { setActiveCategory("all"); setSearchTerm(""); }}
+                  >
+                    All Specialisations (7)
+                  </button>
+                  {specialisationsData.map(item => (
+                    <button
+                      key={item.id}
+                      className={`spec-tab-btn ${activeCategory === item.id ? "active" : ""}`}
+                      onClick={() => { setActiveCategory(item.id); setSearchTerm(""); }}
+                    >
+                      {item.title.replace(" Recruitment", "")}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 7 Category Cards Grid */}
+              <div className="spec-cards-grid">
+                {filteredSpecialisations.map(spec => (
+                  <div key={spec.id} className="spec-card">
+                    <div className="spec-card-header">
+                      <div className="spec-card-icon"><i className={`fa-solid ${spec.icon}`}></i></div>
+                      <div>
+                        <h3>{spec.title}</h3>
+                        <p style={{ fontSize: "0.88rem", margin: 0, color: "var(--text-muted)" }}>{spec.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="role-tags-wrap">
+                      {spec.roles.map(role => {
+                        const isMatched = searchTerm && role.toLowerCase().includes(searchTerm.toLowerCase().trim());
+                        return (
+                          <span 
+                            key={role} 
+                            className={`role-tag ${isMatched ? "match-highlight" : ""}`}
+                          >
+                            {role}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="text-center" style={{ marginTop: "3rem" }}>
+                <button className="btn btn-gold" onClick={() => setShowEmployerModal(true)}>
+                  Explore Our Recruitment Specialisations &rarr;
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               INDUSTRIES WE RECRUIT FOR
+               ========================================== */}
+          <section className="section-padding bg-alt" id="industries">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "820px", margin: "0 auto" }}>
+                <span className="section-tag emerald">
+                  <i className="fa-solid fa-city"></i> Sector Coverage
+                </span>
+                <h2>Which Industries Does ACE Recruit For?</h2>
+                <p className="lead-text">
+                  Recruitment Expertise Across Hyderabad's Industrial Economy
+                </p>
+              </div>
+
+              <div className="industries-grid">
+                {industriesData.map((ind, idx) => (
+                  <div key={idx} className="industry-card">
+                    <span className="industry-icon">
+                      <i className={`fa-solid ${ind.icon}`} style={{ color: ind.color }}></i>
+                    </span>
+                    <h3>{ind.title}</h3>
+                    <p>{ind.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="text-center" style={{ marginTop: "3rem" }}>
+                <button className="btn btn-outline-dark" onClick={() => setShowEmployerModal(true)}>
+                  Explore Industries &rarr;
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               WHY IS INDUSTRIAL RECRUITMENT DIFFERENT? (CASE STUDY)
+               ========================================== */}
+          <section className="section-padding bg-light" id="difference">
+            <div className="container">
+              <div className="diff-container">
+                <div>
+                  <span className="section-tag red">
+                    <i className="fa-solid fa-triangle-exclamation"></i> Beyond Job Titles
+                  </span>
+                  <h2>Why Is Industrial Recruitment Different?</h2>
+                  <h3 style={{ color: "var(--accent-red)", fontSize: "1.5rem", marginBottom: "1.25rem" }}>
+                    Because the Job Title Doesn't Tell the Whole Story.
+                  </h3>
+                  <p>
+                    For many industrial roles, <strong>two candidates can have the exact same job title but completely different capabilities</strong>.
+                  </p>
+                  <p>
+                    Consider a CNC Machinist. An employer may need someone with experience in specific machines, setups, materials, and tolerances that generic job boards completely overlook.
+                  </p>
+                  <p>
+                    The same applies to welders, maintenance technicians, production operators and other skilled roles.
+                  </p>
+                  <div style={{ padding: "1.25rem 1.5rem", background: "var(--white)", borderRadius: "var(--border-radius)", borderLeft: "4px solid var(--accent-yellow)", boxShadow: "var(--card-shadow)", marginTop: "1.5rem" }}>
+                    <p style={{ margin: 0, fontWeight: 700, color: "var(--primary-color)", fontSize: "1.1rem" }}>
+                      That's why ACE starts with the actual requirement—not just the job title.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="diff-case-study">
+                  <span className="case-study-badge">
+                    <i className="fa-solid fa-microscope"></i> Practical Example: CNC Machinist
+                  </span>
+                  <h4 style={{ fontSize: "1.2rem", color: "var(--primary-color)", marginBottom: "0.5rem" }}>
+                    An employer may need someone with experience in:
+                  </h4>
+                  <p style={{ fontSize: "0.92rem", color: "var(--text-muted)" }}>
+                    We screen against practical shop floor criteria:
+                  </p>
+
+                  <div className="criteria-grid">
+                    <div className="criteria-pill"><span className="dot"></span> Specific CNC machinery</div>
+                    <div className="criteria-pill"><span className="dot"></span> VMC or HMC operations</div>
+                    <div className="criteria-pill"><span className="dot"></span> Machine setting</div>
+                    <div className="criteria-pill"><span className="dot"></span> Engineering drawings</div>
+                    <div className="criteria-pill"><span className="dot"></span> Measuring instruments</div>
+                    <div className="criteria-pill"><span className="dot"></span> Production environments</div>
+                    <div className="criteria-pill"><span className="dot"></span> Specific materials</div>
+                    <div className="criteria-pill"><span className="dot"></span> Quality requirements</div>
+                  </div>
+
+                  <div style={{ marginTop: "1.25rem", paddingTop: "1rem", borderTop: "1px solid var(--border-color)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "#065f46" }}>
+                      <i className="fa-solid fa-check-double green-text"></i> Pre-Screened for Exact Fit
+                    </span>
+                    <button className="btn btn-sm btn-emerald" onClick={() => setShowEmployerModal(true)}>
+                      Hire Machinists
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               HOW WE RECRUIT (7-STEP DIGITAL-FIRST PROCESS)
+               ========================================== */}
+          <section className="section-padding" id="how-we-recruit">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "850px", margin: "0 auto" }}>
+                <span className="section-tag gold">
+                  <i className="fa-solid fa-diagram-project"></i> Our Methodology
+                </span>
+                <h2>How We Recruit</h2>
+                <p className="lead-text">
+                  A Digital-First Recruitment Process Built Around the Role
+                </p>
+              </div>
+
+              <div className="process-timeline">
+                {processSteps.map(st => (
+                  <div key={st.step} className="process-step-card">
+                    <div className="step-num-badge">{st.step}</div>
+                    <div className="step-info">
+                      <h3>{st.title}</h3>
+                      <p>{st.desc}</p>
+                      {st.pills.length > 0 && (
+                        <div className="step-tag-pills">
+                          {st.pills.map((pill, pIdx) => (
+                            <span key={pIdx} className="step-tag-pill">{pill}</span>
+                          ))}
+                        </div>
+                      )}
+                      {st.note && (
+                        <p style={{ marginTop: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--primary-color)" }}>
+                          {st.note}
+                        </p>
+                      )}
+                    </div>
+                    <div><i className={`fa-solid ${st.icon}`} style={{ fontSize: "2rem", color: "#94a3b8" }}></i></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               WHY CHOOSE ACE?
+               ========================================== */}
+          <section className="section-padding bg-alt" id="why-ace">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "850px", margin: "0 auto" }}>
+                <span className="section-tag red">
+                  <i className="fa-solid fa-bullseye"></i> Why Choose ACE?
+                </span>
+                <h2>Because Difficult Hiring Requires a Different Approach.</h2>
+                <p className="lead-text">
+                  Built for industrial leaders who cannot afford recruitment bottlenecks or mismatched skills.
+                </p>
+              </div>
+
+              <div className="why-ace-grid">
+                {whyAcePillars.map((pil, idx) => (
+                  <div key={idx} className="why-ace-card">
+                    <div className="why-icon-circle"><i className={`fa-solid ${pil.icon}`}></i></div>
+                    <h3>{pil.title}</h3>
+                    <p>{pil.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               WHAT PROBLEMS DOES ACE SOLVE?
+               ========================================== */}
+          <section className="section-padding bg-light" id="problems-we-solve">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "820px", margin: "0 auto" }}>
+                <span className="section-tag gold">
+                  <i className="fa-solid fa-shield-halved"></i> Pain Points We Eliminate
+                </span>
+                <h2>What Problems Does ACE Solve?</h2>
+                <p className="lead-text">
+                  Recruitment Challenges We Help Employers Address
+                </p>
+              </div>
+
+              <div className="problems-grid">
+                {problemsData.map((prob, idx) => (
+                  <div key={idx} className="problem-card">
+                    <div className="quote-header">
+                      <span className="quote-icon">“</span>
+                      <div className="problem-quote">{prob.quote}</div>
+                    </div>
+                    <div className="solution-box">
+                      <span className="solution-label"><i className="fa-solid fa-arrow-right"></i> How ACE Solves It</span>
+                      <p className="solution-text">{prob.solution}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               WHY DO HIRING DELAYS MATTER? (CASCADE)
+               ========================================== */}
+          <section className="section-padding bg-teal-dark" id="hiring-delays">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "820px", margin: "0 auto" }}>
+                <span className="section-tag gold">
+                  <i className="fa-solid fa-clock"></i> Operational Risk
+                </span>
+                <h2>Why Do Hiring Delays Matter?</h2>
+                <h3 style={{ color: "var(--accent-yellow)", fontSize: "1.4rem" }}>
+                  An Open Position Can Become an Operational Problem.
+                </h3>
+                <p style={{ color: "#cbd5e1", fontSize: "1.05rem" }}>
+                  A vacant technical or skilled position can put additional pressure on existing employees and may affect production, projects, quality or operations.
+                </p>
+              </div>
+
+              <div className="cascade-flow">
+                <div className="cascade-step">
+                  <div className="cascade-icon">⚠️</div>
+                  <h4>CNC Operator Vacancy</h4>
+                  <p style={{ fontSize: "0.85rem", color: "#cbd5e1", margin: 0 }}>Unfilled machine shift</p>
+                </div>
+                <div className="cascade-arrow">&rarr;</div>
+                <div className="cascade-step">
+                  <div className="cascade-icon">📉</div>
+                  <h4>Reduced Available Operators</h4>
+                  <p style={{ fontSize: "0.85rem", color: "#cbd5e1", margin: 0 }}>Lower throughput capacity</p>
+                </div>
+                <div className="cascade-arrow">&rarr;</div>
+                <div className="cascade-step">
+                  <div className="cascade-icon">⏳</div>
+                  <h4>Additional Workload</h4>
+                  <p style={{ fontSize: "0.85rem", color: "#cbd5e1", margin: 0 }}>Pressure on existing employees</p>
+                </div>
+                <div className="cascade-arrow">&rarr;</div>
+                <div className="cascade-step">
+                  <div className="cascade-icon">⚡</div>
+                  <h4>Overtime &amp; Quality Risk</h4>
+                  <p style={{ fontSize: "0.85rem", color: "#cbd5e1", margin: 0 }}>Productivity bottlenecks</p>
+                </div>
+                <div className="cascade-arrow">&rarr;</div>
+                <div className="cascade-step" style={{ borderColor: "var(--accent-yellow)", background: "rgba(252, 163, 17, 0.15)" }}>
+                  <div className="cascade-icon">🚨</div>
+                  <h4 style={{ color: "var(--accent-yellow)" }}>Urgency to Recruit</h4>
+                  <p style={{ fontSize: "0.85rem", color: "#cbd5e1", margin: 0 }}>Critical need for immediate talent</p>
+                </div>
+              </div>
+
+              <div className="text-center" style={{ marginTop: "2rem" }}>
+                <p style={{ color: "#e2e8f0", fontSize: "1.1rem", maxWidth: "750px", margin: "0 auto 1.75rem" }}>
+                  The longer a critical position remains open, the more important it becomes to have an effective candidate sourcing strategy. <strong>ACE helps employers build that candidate pipeline.</strong>
+                </p>
+                <button className="btn btn-gold" onClick={() => setShowEmployerModal(true)}>
+                  Stop Hiring Delays — Hire with ACE &rarr;
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               HYDERABAD HIRING. NATIONWIDE TALENT.
+               ========================================== */}
+          <section className="section-padding bg-light" id="nationwide-talent">
+            <div className="container">
+              <div className="geo-container">
+                <div>
+                  <span className="section-tag emerald">
+                    <i className="fa-solid fa-map-pin"></i> Geographic Advantage
+                  </span>
+                  <h2>Hyderabad Hiring. Nationwide Talent.</h2>
+                  <h3 style={{ color: "var(--primary-color)", fontSize: "1.45rem", marginBottom: "1rem" }}>
+                    Your Next Candidate Could Be Anywhere in India.
+                  </h3>
+                  <p>
+                    A suitable candidate for a Hyderabad opportunity may currently be working in another industrial or manufacturing hub.
+                  </p>
+                  <p>
+                    ACE helps employers expand their recruitment search beyond the local market.
+                  </p>
+                  <div style={{ background: "var(--white)", padding: "1.25rem 1.5rem", borderRadius: "var(--border-radius)", borderLeft: "4px solid var(--accent-green)", boxShadow: "var(--card-shadow)", margin: "1.5rem 0" }}>
+                    <p style={{ margin: 0, fontSize: "1.15rem", fontWeight: 700, color: "var(--primary-color)" }}>
+                      We recruit for Hyderabad. We source talent across India.
+                    </p>
+                  </div>
+                  <button className="btn btn-primary" onClick={() => setShowEmployerModal(true)}>
+                    Start Your Hiring Requirement &rarr;
+                  </button>
+                </div>
+
+                <div className="radar-card-wrap">
+                  <div className="radar-header">
+                    <div>
+                      <h4 style={{ color: "var(--primary-color)", fontSize: "1.1rem", margin: 0 }}>Active Sourcing Corridors</h4>
+                      <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Industrial talent streams into Hyderabad</span>
+                    </div>
+                    <span className="section-tag emerald" style={{ margin: 0 }}>Live Network</span>
+                  </div>
+
+                  <div className="hub-corridors-grid">
+                    <div className="corridor-pill">
+                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#0284c7" }}></i> Pune Auto Hub</span>
+                      <span className="dest-pill">&rarr; Hyd</span>
+                    </div>
+                    <div className="corridor-pill">
+                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#10b981" }}></i> Chennai Auto/Mfg</span>
+                      <span className="dest-pill">&rarr; Hyd</span>
+                    </div>
+                    <div className="corridor-pill">
+                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#f59e0b" }}></i> Coimbatore Machining</span>
+                      <span className="dest-pill">&rarr; Hyd</span>
+                    </div>
+                    <div className="corridor-pill">
+                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#8b5cf6" }}></i> Bangalore Precision</span>
+                      <span className="dest-pill">&rarr; Hyd</span>
+                    </div>
+                    <div className="corridor-pill">
+                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#ec4899" }}></i> Gujarat Industrial</span>
+                      <span className="dest-pill">&rarr; Hyd</span>
+                    </div>
+                    <div className="corridor-pill">
+                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#f43f5e" }}></i> NCR Engineering</span>
+                      <span className="dest-pill">&rarr; Hyd</span>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: "1.25rem", fontSize: "0.82rem", color: "var(--text-muted)", textAlign: "center" }}>
+                    <i className="fa-solid fa-circle-check green-text"></i> Screened for willingness to relocate, salary alignment, and immediate availability.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               WHAT MAKES ACE DIFFERENT? (COMPARISON)
+               ========================================== */}
+          <section className="section-padding" id="comparison">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "820px", margin: "0 auto" }}>
+                <span className="section-tag red">
+                  <i className="fa-solid fa-code-compare"></i> The Recruitment Shift
+                </span>
+                <h2>What Makes ACE Different?</h2>
+                <p className="lead-text">
+                  We Don't Just Ask Who Applied. <strong>We Ask Who Else We Should Reach.</strong>
+                </p>
+              </div>
+
+              <div className="comparison-grid">
+                <div className="compare-card traditional">
+                  <span className="compare-badge">Traditional Recruitment</span>
+                  <h3>Post &rarr; Wait &rarr; Receive Applications</h3>
+                  <p style={{ fontSize: "0.95rem" }}>Traditional recruitment can rely heavily on passive waiting:</p>
+                  
+                  <div className="flow-pills-row">
+                    <span className="flow-badge">Post</span>
+                    <span>&rarr;</span>
+                    <span className="flow-badge">Wait</span>
+                    <span>&rarr;</span>
+                    <span className="flow-badge">Receive Applications</span>
+                  </div>
+
+                  <div className="compare-list">
+                    <div className="compare-item"><i className="fa-solid fa-circle-xmark red-text"></i> Misses already employed high performers</div>
+                    <div className="compare-item"><i className="fa-solid fa-circle-xmark red-text"></i> Limited to passive job board visitors</div>
+                    <div className="compare-item"><i className="fa-solid fa-circle-xmark red-text"></i> Overwhelms HR with irrelevant CVs</div>
+                  </div>
+                </div>
+
+                <div className="compare-card ace-way">
+                  <span className="compare-badge">ACE Digital-First Model</span>
+                  <h3>Understand &rarr; Target &rarr; Reach &rarr; Engage</h3>
+                  <p style={{ fontSize: "0.95rem", color: "#e2e8f0" }}>ACE combines proactive multi-channel acquisition:</p>
+                  
+                  <div className="flow-pills-row">
+                    <span className="flow-badge">Understand</span>
+                    <span>&rarr;</span>
+                    <span className="flow-badge">Target</span>
+                    <span>&rarr;</span>
+                    <span className="flow-badge">Reach</span>
+                    <span>&rarr;</span>
+                    <span className="flow-badge">Engage</span>
+                    <span>&rarr;</span>
+                    <span className="flow-badge">Screen</span>
+                    <span>&rarr;</span>
+                    <span className="flow-badge">Shortlist</span>
+                    <span>&rarr;</span>
+                    <span className="flow-badge">Connect</span>
+                  </div>
+
+                  <div className="compare-list">
+                    <div className="compare-item"><i className="fa-solid fa-circle-check gold-text"></i> Reaches already employed talent considering a move</div>
+                    <div className="compare-item"><i className="fa-solid fa-circle-check gold-text"></i> Sourced across India's top industrial clusters</div>
+                    <div className="compare-item"><i className="fa-solid fa-circle-check gold-text"></i> Curated shortlist worth interviewing</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ background: "var(--bg-alt)", padding: "1.5rem 2rem", borderRadius: "var(--border-radius)", marginTop: "2.5rem", textAlign: "center", border: "1px solid var(--border-color)" }}>
+                <p style={{ margin: 0, color: "var(--text-dark)", fontSize: "1rem", fontWeight: 500 }}>
+                  <strong>This matters because some of the most relevant candidates may be:</strong> Already employed, not actively searching, located outside Hyderabad, unaware of the opportunity, or not using the job portal where the vacancy was posted. <strong>Digital-first recruitment helps us expand the talent search.</strong>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               WHEN SHOULD YOU USE A SPECIALIST RECRUITMENT AGENCY?
+               ========================================== */}
+          <section className="section-padding bg-alt" id="when-to-use">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "820px", margin: "0 auto" }}>
+                <span className="section-tag gold">
+                  <i className="fa-solid fa-lightbulb"></i> Strategic Timing
+                </span>
+                <h2>When Should You Use a Specialist Recruitment Agency?</h2>
+                <p className="lead-text">
+                  ACE can be particularly useful when your business is:
+                </p>
+              </div>
+
+              <div className="scenarios-grid">
+                <div className="scenario-card">
+                  <div className="scenario-num">01</div>
+                  <h3>Hiring for a Hard-to-Fill Position</h3>
+                  <p>The required skills are specialised or difficult to find locally.</p>
+                </div>
+
+                <div className="scenario-card">
+                  <div className="scenario-num">02</div>
+                  <h3>Hiring Multiple Candidates</h3>
+                  <p>Your internal recruitment team needs additional sourcing capacity.</p>
+                </div>
+
+                <div className="scenario-card">
+                  <div className="scenario-num">03</div>
+                  <h3>Expanding Your Operations</h3>
+                  <p>New machinery, production capacity, projects or facilities are creating additional hiring requirements.</p>
+                </div>
+
+                <div className="scenario-card">
+                  <div className="scenario-num">04</div>
+                  <h3>Replacing Experienced Employees</h3>
+                  <p>A critical technical or skilled employee has left and the role needs to be filled quickly.</p>
+                </div>
+
+                <div className="scenario-card">
+                  <div className="scenario-num">05</div>
+                  <h3>Hiring Repeatedly for Same Positions</h3>
+                  <p>You need a more sustainable talent pipeline.</p>
+                </div>
+
+                <div className="scenario-card">
+                  <div className="scenario-num">06</div>
+                  <h3>Searching Beyond Hyderabad</h3>
+                  <p>The local candidate pool isn't producing enough suitable candidates.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               FREQUENTLY ASKED QUESTIONS (ACCORDION)
+               ========================================== */}
+          <section className="section-padding bg-light" id="faq">
+            <div className="container">
+              <div className="text-center" style={{ maxWidth: "820px", margin: "0 auto" }}>
+                <span className="section-tag teal">
+                  <i className="fa-solid fa-circle-question"></i> Clear Answers
+                </span>
+                <h2>Frequently Asked Questions</h2>
+                <p className="lead-text">
+                  Everything you need to know about ACE Workforce Solutions' recruitment model.
+                </p>
+              </div>
+
+              <div className="faq-wrap">
+                {faqsData.map((faq, idx) => {
+                  const isOpen = activeFaqIndex === idx;
+                  return (
+                    <div key={idx} className={`faq-item ${isOpen ? "active" : ""}`}>
+                      <button 
+                        className="faq-question"
+                        onClick={() => setActiveFaqIndex(isOpen ? -1 : idx)}
+                      >
+                        <span>{faq.q}</span>
+                        <span className="faq-icon">{isOpen ? "−" : "+"}</span>
+                      </button>
+                      <div className="faq-answer">
+                        <p>{faq.a}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               DUAL ACTION SECTIONS (FOR EMPLOYERS & CANDIDATES)
+               ========================================== */}
+          <section className="section-padding" id="action-hubs">
+            <div className="container">
+              <div className="dual-cta-grid">
+                
+                {/* For Employers */}
+                <div className="dual-card employer-card">
+                  <span className="section-tag gold" style={{ width: "fit-content" }}>For Employers</span>
+                  <h2>Have a Difficult Position to Fill?</h2>
+                  <p>Tell us:</p>
+                  
+                  <div className="checklist-items">
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> The role.</div>
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> The skills required.</div>
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> The number of positions.</div>
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> The experience needed.</div>
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> When you need them.</div>
+                  </div>
+                  <p style={{ fontSize: "0.95rem", color: "#e2e8f0" }}>We'll understand the requirement and build the candidate search around it.</p>
+
+                  <div style={{ marginTop: "auto" }}>
+                    <button className="btn btn-gold" style={{ width: "100%" }} onClick={() => setShowEmployerModal(true)}>
+                      <i className="fa-brands fa-whatsapp"></i> Submit Your Hiring Requirement &rarr;
+                    </button>
+                  </div>
+                </div>
+
+                {/* For Candidates */}
+                <div className="dual-card candidate-card">
+                  <span className="section-tag emerald" style={{ width: "fit-content", background: "#d1fae5", color: "#065f46" }}>For Candidates</span>
+                  <h2>Looking for Your Next Opportunity in Hyderabad?</h2>
+                  <p>
+                    ACE connects engineers, technicians, skilled workers and semi-skilled professionals with relevant opportunities across Hyderabad's manufacturing, engineering, industrial and logistics sectors.
+                  </p>
+
+                  <div className="checklist-items">
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> Verified Industrial Roles</div>
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> Clear Machine &amp; Technical Scope</div>
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> Relocation Support to Hyderabad</div>
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> Transparent Communication</div>
+                    <div className="checklist-item"><i className="fa-solid fa-check check-green"></i> Zero Fees for Job Seekers</div>
+                  </div>
+
+                  <div style={{ marginTop: "auto" }}>
+                    <button className="btn btn-emerald" style={{ width: "100%" }} onClick={() => setShowCandidateModal(true)}>
+                      <i className="fa-brands fa-whatsapp"></i> Submit Your Profile &rarr;
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               CLOSING MANIFESTO BANNER
+               ========================================== */}
+          <section className="manifesto-section">
+            <div className="container text-center">
+              <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+                <p className="manifesto-quote">
+                  The Right Talent Isn't Always the Easiest Talent to Find. <br />
+                  <span style={{ color: "var(--accent-yellow)" }}>That's Why We Recruit Differently.</span>
+                </p>
+
+                <div className="manifesto-pillars">
+                  <span className="manifesto-pill"><i className="fa-solid fa-1"></i> Understand the requirement.</span>
+                  <span className="manifesto-pill"><i className="fa-solid fa-2"></i> Expand the search.</span>
+                  <span className="manifesto-pill"><i className="fa-solid fa-3"></i> Reach the right talent.</span>
+                  <span className="manifesto-pill"><i className="fa-solid fa-4"></i> Screen for relevance.</span>
+                  <span className="manifesto-pill"><i className="fa-solid fa-5"></i> Build the shortlist.</span>
+                  <span className="manifesto-pill"><i className="fa-solid fa-6"></i> Support the hire.</span>
+                </div>
+
+                <div style={{ marginTop: "3rem" }}>
+                  <button className="btn btn-lg btn-gold" onClick={() => setShowEmployerModal(true)}>
+                    <i className="fa-solid fa-briefcase"></i> Hire Talent
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+               FOOTER
+               ========================================== */}
+          <footer className="footer">
+            <div className="container">
+              <div className="footer-top-grid">
+                <div className="footer-brand">
+                  <div className="logo-wrap" style={{ marginBottom: "1rem" }}>
+                    <div className="logo-badge">A</div>
+                    <div className="logo-text">
+                      <span className="logo-title" style={{ color: "var(--white)" }}>ACE Workforce</span>
+                      <span className="logo-sub">Workforce Solutions</span>
+                    </div>
+                  </div>
+                  <p>
+                    <strong>ACE Workforce Solutions</strong><br />
+                    Digital-First Specialist Recruitment for Hyderabad Businesses
+                  </p>
+                  <p style={{ fontSize: "0.85rem", color: "#cbd5e1" }}>
+                    Technical Talent | Skilled Talent | Semi-Skilled Talent<br />
+                    Hyderabad Recruitment | India-Wide Candidate Sourcing<br />
+                    Manufacturing | Automotive | Engineering | Industrial | Aerospace &amp; Defence | Warehouse &amp; Logistics
+                  </p>
+                </div>
+
+                <div className="footer-col">
+                  <h4>Sectors</h4>
+                  <ul>
+                    <li><a href="#industries">Automotive &amp; Auto Components</a></li>
+                    <li><a href="#industries">Precision Manufacturing</a></li>
+                    <li><a href="#industries">Engineering &amp; Machinery</a></li>
+                    <li><a href="#industries">Industrial Equipment &amp; Fabrication</a></li>
+                    <li><a href="#industries">Aerospace &amp; Defence Suppliers</a></li>
+                    <li><a href="#industries">Warehouse &amp; Logistics</a></li>
+                  </ul>
+                </div>
+
+                <div className="footer-col">
+                  <h4>Specialisations</h4>
+                  <ul>
+                    <li><a href="#what-we-do">Engineering &amp; Technical</a></li>
+                    <li><a href="#what-we-do">CNC &amp; Precision Machining</a></li>
+                    <li><a href="#what-we-do">Maintenance &amp; Electrical</a></li>
+                    <li><a href="#what-we-do">Welding &amp; Fabrication</a></li>
+                    <li><a href="#what-we-do">Production &amp; Assembly</a></li>
+                    <li><a href="#what-we-do">Quality &amp; Inspection</a></li>
+                  </ul>
+                </div>
+
+                <div className="footer-col">
+                  <h4>Quick Connect</h4>
+                  <p style={{ fontSize: "0.88rem", marginBottom: "1rem" }}>
+                    Direct WhatsApp Helpline:<br />
+                    <strong style={{ color: "var(--accent-yellow)" }}>+91 90109 06074</strong>
+                  </p>
+                  <button 
+                    className="btn btn-sm btn-gold" 
+                    style={{ width: "100%", marginBottom: "0.75rem" }} 
+                    onClick={() => setShowEmployerModal(true)}
+                  >
+                    <i className="fa-brands fa-whatsapp"></i> Hire Talent
+                  </button>
+                  <button 
+                    className="btn btn-sm btn-outline-light" 
+                    style={{ width: "100%" }} 
+                    onClick={() => setShowCandidateModal(true)}
+                  >
+                    Candidate Profile
+                  </button>
+                </div>
+              </div>
+
+              <div className="footer-bottom">
+                <div>
+                  Copyright &copy; 2026 ACE Workforce Solutions. All rights reserved.
+                </div>
+                <div>
+                  Specialist Industrial Recruitment &bull; Hyderabad, India &bull; WhatsApp: +91 90109 06074
+                </div>
+              </div>
+            </div>
+          </footer>
+
+          {/* ==========================================
+               MODALS (WITH DIRECT WHATSAPP REDIRECT)
+               ========================================== */}
+          
+          {/* Employer Hiring Requirement Modal */}
+          <div className={`modal-overlay ${showEmployerModal ? "active" : ""}`}>
+            <div className="modal-container">
+              <button className="modal-close" onClick={() => setShowEmployerModal(false)}>&times;</button>
+              <span className="section-tag gold" style={{ marginBottom: "0.5rem" }}>
+                <i className="fa-brands fa-whatsapp"></i> WhatsApp Direct Sourcing
+              </span>
+              <h2 style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>Submit Your Hiring Requirement</h2>
+              <p style={{ fontSize: "0.92rem", marginBottom: "1.5rem" }}>
+                Fill in your position requirements below. Upon submission, this information will be forwarded instantly to our recruitment team on WhatsApp at <strong>+91 90109 06074</strong>.
+              </p>
+
+              <form onSubmit={handleEmployerSubmit}>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="empName">Your Name / Designation *</label>
+                    <input type="text" id="empName" name="empName" className="form-control" placeholder="e.g. HR Manager / Plant Head" required />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="empCompany">Company Name *</label>
+                    <input type="text" id="empCompany" name="empCompany" className="form-control" placeholder="e.g. Hyderabad Auto Components Ltd" required />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="empEmail">Business Email *</label>
+                    <input type="email" id="empEmail" name="empEmail" className="form-control" placeholder="name@company.com" required />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="empPhone">Phone / WhatsApp Number *</label>
+                    <input type="tel" id="empPhone" name="empPhone" className="form-control" placeholder="+91 98765 43210" required />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="empRole">Role Category *</label>
+                    <select id="empRole" name="empRole" className="form-control" required>
+                      <option value="">Select Role Specialisation</option>
+                      <option value="CNC & Precision Machining">CNC &amp; Precision Machining (VMC/HMC/Lathe)</option>
+                      <option value="Maintenance & Electrical">Maintenance &amp; Electrical Technicians</option>
+                      <option value="Welding & Fabrication">Welding &amp; Fabrication (TIG/MIG/Arc)</option>
+                      <option value="Production & Assembly">Production &amp; Assembly Operators</option>
+                      <option value="Quality & Inspection">Quality &amp; QC / CMM / NDT Inspection</option>
+                      <option value="Warehouse & Logistics">Warehouse &amp; Logistics / Forklift</option>
+                      <option value="Engineering & Technical">Engineering &amp; Technical (Mechanical/Electrical/Civil)</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="empCount">Number of Positions *</label>
+                    <input type="number" id="empCount" name="empCount" className="form-control" placeholder="e.g. 4" min="1" required />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="empDetails">Role Details, Machine Controls, Experience &amp; Timeline *</label>
+                  <textarea 
+                    id="empDetails" 
+                    name="empDetails" 
+                    rows="3" 
+                    className="form-control" 
+                    placeholder="Specify controls (Fanuc, Siemens, Haas), welding grade (TIG/MIG), years of experience, shift requirements, and joining timeline." 
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" className="btn btn-gold" style={{ width: "100%", marginTop: "0.5rem" }}>
+                  <i className="fa-brands fa-whatsapp"></i> Send Requirement to WhatsApp (+91 90109 06074) &rarr;
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* Candidate Profile Submission Modal */}
+          <div className={`modal-overlay ${showCandidateModal ? "active" : ""}`}>
+            <div className="modal-container">
+              <button className="modal-close" onClick={() => setShowCandidateModal(false)}>&times;</button>
+              <span className="section-tag emerald" style={{ marginBottom: "0.5rem" }}>
+                <i className="fa-brands fa-whatsapp"></i> Direct Candidate Registration
+              </span>
+              <h2 style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>Submit Your Profile</h2>
+              <p style={{ fontSize: "0.92rem", marginBottom: "1.5rem" }}>
+                Looking for industrial opportunities in Hyderabad? Fill your details below to send directly to our recruitment helpline on WhatsApp at <strong>+91 90109 06074</strong>.
+              </p>
+
+              <form onSubmit={handleCandidateSubmit}>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="candName">Full Name *</label>
+                    <input type="text" id="candName" name="candName" className="form-control" placeholder="Your Full Name" required />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="candPhone">Phone / WhatsApp Number *</label>
+                    <input type="tel" id="candPhone" name="candPhone" className="form-control" placeholder="+91 98765 43210" required />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="candRole">Your Primary Skill / Role *</label>
+                    <input type="text" id="candRole" name="candRole" className="form-control" placeholder="e.g. CNC Operator / TIG Welder / QC Inspector" required />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="candExp">Total Experience (Years) *</label>
+                    <input type="number" id="candExp" name="candExp" className="form-control" placeholder="e.g. 4" min="0" required />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="candCity">Current City *</label>
+                    <input type="text" id="candCity" name="candCity" className="form-control" placeholder="e.g. Pune, Chennai, Hyderabad, Coimbatore" required />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="candRelocate">Willing to work in Hyderabad? *</label>
+                    <select id="candRelocate" name="candRelocate" className="form-control" required>
+                      <option value="Yes, ready to relocate">Yes, ready to relocate to Hyderabad</option>
+                      <option value="Already located in Hyderabad">Already located in Hyderabad</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="candNote">Key Machines Handled / Certifications / Notice Period</label>
+                  <textarea 
+                    id="candNote" 
+                    name="candNote" 
+                    rows="2" 
+                    className="form-control" 
+                    placeholder="Mention machines (Fanuc/Siemens VMC), welding certs (6G/TIG), current salary, notice period."
+                  ></textarea>
+                </div>
+
+                <button type="submit" className="btn btn-emerald" style={{ width: "100%", marginTop: "0.5rem" }}>
+                  <i className="fa-brands fa-whatsapp"></i> Send Profile to WhatsApp (+91 90109 06074) &rarr;
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* Toast Notification */}
+          <div 
+            style={{
+              position: "fixed",
+              bottom: "25px",
+              right: "25px",
+              background: "#0b2545",
+              color: "#fff",
+              padding: "1rem 1.5rem",
+              borderRadius: "12px",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+              borderLeft: "5px solid #fca311",
+              zIndex: 10000,
+              transform: toast.show ? "translateY(0)" : "translateY(150%)",
+              transition: "transform 0.4s ease",
+              maxWidth: "350px"
+            }}
+          >
+            <h4 style={{ color: "#fca311", fontSize: "1rem", marginBottom: "0.25rem" }}>{toast.title}</h4>
+            <p style={{ fontSize: "0.88rem", color: "#e2e8f0", margin: 0 }}>{toast.message}</p>
+          </div>
+        </div>
+      );
+    }
+
+    // Render React Application
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
