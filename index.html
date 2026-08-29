@@ -332,6 +332,51 @@
       // Toast State
       const [toast, setToast] = useState({ show: false, title: "", message: "" });
 
+      // Candidate Profiles for Hero
+      const heroProfiles = [
+        {
+          id: 1,
+          name: "Rajesh Kumar",
+          role: "Senior CNC Setter",
+          loc: "Pune → Hyderabad",
+          img: "assets/1.jpg",
+          badge: "Verified CNC Specialist"
+        },
+        {
+          id: 2,
+          name: "Sunita Rao",
+          role: "CMM / QC Inspector",
+          loc: "Bangalore → Hyderabad",
+          img: "assets/2.jpg",
+          badge: "Precision Quality Fit"
+        },
+        {
+          id: 3,
+          name: "Arun Verma",
+          role: "TIG / MIG Fabricator",
+          loc: "Chennai → Hyderabad",
+          img: "assets/3.jpg",
+          badge: "Certified Welding Tech"
+        },
+        {
+          id: 4,
+          name: "Vikram Joshi",
+          role: "Electrical Maintenance",
+          loc: "Gujarat → Hyderabad",
+          img: "assets/4.jpg",
+          badge: "Heavy Plant Maintenance"
+        }
+      ];
+
+      const [heroSlide, setHeroSlide] = useState(0);
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setHeroSlide((prev) => (prev + 1) % heroProfiles.length);
+        }, 3200);
+        return () => clearInterval(interval);
+      }, [heroProfiles.length]);
+
       useEffect(() => {
         const handleScroll = () => {
           setIsScrolled(window.scrollY > 40);
@@ -558,6 +603,54 @@ _Submitted via ACE Candidate Portal_`;
                   We source suitable candidates across India and use a combination of <em>digital-first candidate acquisition</em>, <em>proactive sourcing</em> and <em>structured screening</em> to help employers find relevant talent for difficult-to-fill, critical and recurring positions.
                 </p>
                 
+                {/* Mobile Hero Dynamic Candidate Slideshow */}
+                <div className="hero-mobile-slideshow">
+                  <div className="slideshow-header">
+                    <span className="slideshow-pill">
+                      <span className="live-dot"></span> Sourced Candidates for Hyderabad
+                    </span>
+                    <span className="slideshow-count">
+                      {heroSlide + 1} / {heroProfiles.length}
+                    </span>
+                  </div>
+
+                  <div className="slideshow-card-box">
+                    {heroProfiles.map((p, idx) => (
+                      <div 
+                        key={p.id} 
+                        className={`slide-item ${idx === heroSlide ? "active" : ""}`}
+                      >
+                        <div className="slide-avatar-wrap">
+                          <img src={p.img} alt={p.name} className="slide-avatar-img" />
+                          <span className="slide-verified-badge"><i className="fa-solid fa-circle-check"></i></span>
+                        </div>
+                        <div className="slide-details">
+                          <div className="slide-top-row">
+                            <span className="slide-name">{p.name}</span>
+                            <span className="slide-tag-pill">{p.badge}</span>
+                          </div>
+                          <span className="slide-role">{p.role}</span>
+                          <span className="slide-loc">
+                            <i className="fa-solid fa-location-dot"></i> {p.loc}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Slideshow Pagination Dots */}
+                  <div className="slideshow-dots">
+                    {heroProfiles.map((_, idx) => (
+                      <button
+                        key={idx}
+                        className={`slide-dot ${idx === heroSlide ? "active" : ""}`}
+                        onClick={() => setHeroSlide(idx)}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
                 <div className="hero-buttons">
                   <button className="btn btn-lg btn-orange" onClick={() => setShowEmployerModal(true)}>
                     <i className="fa-solid fa-user-plus"></i> Hire Talent &rarr;
