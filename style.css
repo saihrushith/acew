@@ -478,6 +478,17 @@ p {
   justify-content: center;
 }
 
+/* Desktop: wrapper is a transparent overlay so cards position:absolute freely */
+.hero-cards-mobile-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.hero-cards-mobile-wrap .hero-card {
+  pointer-events: all;
+}
+
 .hero-content {
   max-width: 820px;
   margin: 0 auto;
@@ -1961,8 +1972,11 @@ p {
   h1 { font-size: 2.8rem; }
   h2 { font-size: 2.1rem; }
 
-  /* Hide floating cards on tablet — they crowd the layout */
-  .hero-card { display: none; }
+  /* Keep floating cards on tablet but shrink them */
+  .hero-card {
+    width: 130px;
+    height: 130px;
+  }
 
   .hero-mobile-cards { display: none; }
 
@@ -2009,8 +2023,46 @@ p {
   .hero-stats-banner { grid-template-columns: 1fr; padding: 1.25rem; }
   .hero-mobile-cards { display: none; }
 
-  /* Hide floating cards on mobile — prevent text overlap */
-  .hero-card { display: none; }
+  /* On mobile: stack vertically — text first, then cards grid below */
+  .hero-container {
+    flex-direction: column;
+    min-height: unset;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
+
+  /* Override the desktop absolute wrapper to a grid */
+  .hero-cards-mobile-wrap {
+    position: relative !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 420px;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+    pointer-events: all;
+    order: 2;
+  }
+
+  .hero-content {
+    order: 1;
+    width: 100%;
+  }
+
+  .hero-card {
+    position: relative !important;
+    width: 100% !important;
+    height: 140px !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    animation: none !important;
+    border-radius: 14px;
+  }
   
   .process-step-card {
     grid-template-columns: 1fr;

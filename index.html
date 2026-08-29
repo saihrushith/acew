@@ -497,24 +497,43 @@ _Submitted via ACE Candidate Portal_`;
           <section className="hero" id="hero">
             <div className="hero-ambient-blob blob-1"></div>
             <div className="hero-ambient-blob blob-2"></div>
-            
-            <div className="container hero-container">
-              {/* Floating Squircles Cards (Desktop & Laptop) */}
-              <div className="hero-card card-tl" title="Verified CNC Machinist">
-                <img src="assets/1.jpg" alt="Senior CNC Setter" />
-                <div className="card-info">
-                  <span className="candidate-name">Rajesh Kumar</span>
-                  <span className="candidate-role">Senior CNC Setter</span>
-                  <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Pune → Hyderabad</span>
+                        <div className="container hero-container">
+              {/* Floating Squircle Cards — absolute on desktop, 2x2 grid on mobile */}
+              <div className="hero-cards-mobile-wrap">
+                <div className="hero-card card-tl" title="Verified CNC Machinist">
+                  <img src="assets/1.jpg" alt="Senior CNC Setter" />
+                  <div className="card-info">
+                    <span className="candidate-name">Rajesh Kumar</span>
+                    <span className="candidate-role">Senior CNC Setter</span>
+                    <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Pune → Hyderabad</span>
+                  </div>
                 </div>
-              </div>
 
-              <div className="hero-card card-bl" title="Verified Welding Specialist">
-                <img src="assets/3.jpg" alt="TIG / MIG Fabricator" />
-                <div className="card-info">
-                  <span className="candidate-name">Arun Verma</span>
-                  <span className="candidate-role">TIG / MIG Fabricator</span>
-                  <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Chennai → Hyderabad</span>
+                <div className="hero-card card-bl" title="Verified Welding Specialist">
+                  <img src="assets/3.jpg" alt="TIG / MIG Fabricator" />
+                  <div className="card-info">
+                    <span className="candidate-name">Arun Verma</span>
+                    <span className="candidate-role">TIG / MIG Fabricator</span>
+                    <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Chennai → Hyderabad</span>
+                  </div>
+                </div>
+
+                <div className="hero-card card-tr" title="Precision Quality Inspector">
+                  <img src="assets/2.jpg" alt="CMM / QC Inspector" />
+                  <div className="card-info">
+                    <span className="candidate-name">Sunita Rao</span>
+                    <span className="candidate-role">CMM / QC Inspector</span>
+                    <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Bangalore → Hyderabad</span>
+                  </div>
+                </div>
+
+                <div className="hero-card card-br" title="Maintenance Engineer">
+                  <img src="assets/4.jpg" alt="Industrial Maintenance Engineer" />
+                  <div className="card-info">
+                    <span className="candidate-name">Vikram Joshi</span>
+                    <span className="candidate-role">Electrical Maintenance</span>
+                    <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Gujarat → Hyderabad</span>
+                  </div>
                 </div>
               </div>
 
@@ -544,62 +563,9 @@ _Submitted via ACE Candidate Portal_`;
                     <i className="fa-solid fa-file-invoice"></i> Submit a Hiring Requirement &rarr;
                   </button>
                 </div>
-
-                {/* Mobile Hero Candidate Showcase (Always Visible on Mobile & Tablet) */}
-                <div className="hero-mobile-cards">
-                  <div className="mobile-hero-pill">
-                    <img src="assets/1.jpg" alt="Senior CNC Setter" />
-                    <div>
-                      <span className="m-name">Rajesh Kumar</span>
-                      <span className="m-role">Senior CNC Setter</span>
-                      <span className="m-loc"><i className="fa-solid fa-location-dot"></i> Pune → Hyd</span>
-                    </div>
-                  </div>
-                  <div className="mobile-hero-pill">
-                    <img src="assets/2.jpg" alt="CMM / QC Inspector" />
-                    <div>
-                      <span className="m-name">Sunita Rao</span>
-                      <span className="m-role">CMM / QC Inspector</span>
-                      <span className="m-loc"><i className="fa-solid fa-location-dot"></i> Blr → Hyd</span>
-                    </div>
-                  </div>
-                  <div className="mobile-hero-pill">
-                    <img src="assets/3.jpg" alt="TIG / MIG Fabricator" />
-                    <div>
-                      <span className="m-name">Arun Verma</span>
-                      <span className="m-role">TIG / MIG Fabricator</span>
-                      <span className="m-loc"><i className="fa-solid fa-location-dot"></i> Chn → Hyd</span>
-                    </div>
-                  </div>
-                  <div className="mobile-hero-pill">
-                    <img src="assets/4.jpg" alt="Maintenance Engineer" />
-                    <div>
-                      <span className="m-name">Vikram Joshi</span>
-                      <span className="m-role">Maintenance Lead</span>
-                      <span className="m-loc"><i className="fa-solid fa-location-dot"></i> Guj → Hyd</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="hero-card card-tr" title="Precision Quality Inspector">
-                <img src="assets/2.jpg" alt="CMM / QC Inspector" />
-                <div className="card-info">
-                  <span className="candidate-name">Sunita Rao</span>
-                  <span className="candidate-role">CMM / QC Inspector</span>
-                  <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Bangalore → Hyderabad</span>
-                </div>
-              </div>
-
-              <div className="hero-card card-br" title="Maintenance Engineer">
-                <img src="assets/4.jpg" alt="Industrial Maintenance Engineer" />
-                <div className="card-info">
-                  <span className="candidate-name">Vikram Joshi</span>
-                  <span className="candidate-role">Electrical Maintenance</span>
-                  <span className="candidate-loc"><i className="fa-solid fa-location-dot"></i> Gujarat → Hyderabad</span>
-                </div>
               </div>
             </div>
+
 
             {/* Performance Stats Banner */}
             <div className="container">
