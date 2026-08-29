@@ -1869,10 +1869,15 @@ p {
 @media (max-width: 1024px) {
   h1 { font-size: 2.8rem; }
   h2 { font-size: 2.1rem; }
-  
-  .hero-card { display: none; }
-  .hero-mobile-cards { display: grid; }
-  
+
+  /* Keep floating cards on tablet but shrink them */
+  .hero-card {
+    width: 130px;
+    height: 130px;
+  }
+
+  .hero-mobile-cards { display: none; }
+
   .hero-stats-banner { grid-template-columns: 1fr 1fr; }
   .industries-grid { grid-template-columns: 1fr 1fr; }
   .scenarios-grid { grid-template-columns: 1fr 1fr; }
@@ -1910,15 +1915,27 @@ p {
     transform: translateY(0);
   }
 
-  .hero { padding: 3rem 0 4rem; }
-  .hero-content { padding: 2rem 1.25rem; }
+  .hero { padding: 5rem 0 6rem; }
+  .hero-container { min-height: 480px; }
+  .hero-content { padding: 2rem 1.25rem; max-width: 90%; }
   .hero-stats-banner { grid-template-columns: 1fr; padding: 1.25rem; }
-  
-  .hero-mobile-cards {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    margin-top: 1.75rem;
+  .hero-mobile-cards { display: none; }
+
+  /* Reposition floating cards on mobile to top/bottom corners */
+  .hero-card {
+    width: 110px;
+    height: 110px;
   }
+
+  .card-tl { top: 1%; left: 1%; }
+  .card-tr { top: 1%; right: 1%; }
+  .card-bl { bottom: 1%; left: 1%; }
+  .card-br { bottom: 1%; right: 1%; }
+
+  .hero-card .candidate-name { font-size: 0.72rem; }
+  .hero-card .candidate-role { font-size: 0.6rem; }
+  .hero-card .candidate-loc { font-size: 0.55rem; }
+  .hero-card .card-info { padding: 5px 7px; }
   
   .process-step-card {
     grid-template-columns: 1fr;
