@@ -875,28 +875,104 @@ p {
   box-shadow: 0 4px 12px rgba(26, 100, 196, 0.25);
 }
 
+/* ==========================================================================
+   WHAT WE DO — DARK GLASSMORPHISM SECTION
+   ========================================================================== */
+.what-we-do-dark {
+  background: linear-gradient(135deg, #081830 0%, #0b2f5c 40%, #0d1f40 70%, #160a28 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.what-we-do-dark::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: -120px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255, 119, 0, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.what-we-do-dark::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: -100px;
+  width: 450px; height: 450px;
+  background: radial-gradient(circle, rgba(26, 100, 196, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Headings override for dark section */
+.what-we-do-dark h2 { color: #ffffff; }
+.what-we-do-dark .lead-text { color: rgba(200, 220, 255, 0.8); }
+
+/* Search bar on dark bg */
+.what-we-do-dark .spec-search-bar {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.what-we-do-dark .spec-search-input {
+  background: transparent;
+  color: #ffffff;
+}
+.what-we-do-dark .spec-search-input::placeholder { color: rgba(200, 220, 255, 0.5); }
+.what-we-do-dark .search-icon-fixed { color: rgba(200, 220, 255, 0.6); }
+
+/* Filter tabs on dark bg */
+.what-we-do-dark .spec-tab-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(200, 220, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.what-we-do-dark .spec-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+.what-we-do-dark .spec-tab-btn.active {
+  background: var(--accent-orange);
+  color: var(--white);
+  border-color: var(--accent-orange);
+  box-shadow: 0 4px 18px rgba(255, 119, 0, 0.4);
+}
+
+
 .spec-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
   margin-top: 1.5rem;
 }
 
+
+/* Glassmorphism Spec Cards */
 .spec-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.85rem;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--card-shadow);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--border-radius-lg);
+  padding: 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transition: var(--transition);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.spec-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
 .spec-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--card-shadow-hover);
-  border-color: rgba(26, 100, 196, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 119, 0, 0.45);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 119, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .spec-card-header {
@@ -910,49 +986,62 @@ p {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--accent-blue-light);
+  background: rgba(255, 119, 0, 0.2);
+  border: 1px solid rgba(255, 119, 0, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   flex-shrink: 0;
-  color: var(--primary-color);
+  color: var(--accent-orange);
 }
 
 .spec-card h3 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin-bottom: 0.2rem;
-  color: var(--primary-dark);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.spec-card-subtitle {
+  font-size: 0.84rem;
+  color: rgba(200, 220, 255, 0.75);
+  margin: 0;
 }
 
 .role-tags-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.45rem;
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .role-tag {
-  background: var(--bg-alt);
-  color: var(--text-dark);
-  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(220, 235, 255, 0.92);
+  font-size: 0.78rem;
   font-weight: 500;
-  padding: 0.35rem 0.75rem;
-  border-radius: 6px;
-  border: 1px solid rgba(220, 231, 245, 0.8);
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: var(--transition);
+  flex-grow: 1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .role-tag:hover {
-  background: var(--primary-color);
+  background: var(--accent-orange);
   color: var(--white);
-  border-color: var(--primary-color);
+  border-color: var(--accent-orange);
+  transform: scale(1.04);
 }
 
 .role-tag.match-highlight {
-  background: var(--accent-orange-light);
-  color: #c25700;
+  background: rgba(255, 119, 0, 0.35);
+  color: #ffe4c0;
   border-color: var(--accent-orange);
   font-weight: 700;
 }
