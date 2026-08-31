@@ -378,49 +378,56 @@ p {
   top: 0;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(220, 231, 245, 0.9);
   transition: var(--transition);
 }
 
 .navbar.scrolled {
-  box-shadow: 0 4px 20px rgba(26, 100, 196, 0.1);
-  padding: 0.35rem 0;
+  box-shadow: 0 6px 24px rgba(26, 100, 196, 0.09);
+  padding: 0.2rem 0;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.5rem;
+  gap: 2rem;
 }
 
 .logo-wrap {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.9rem;
+  flex-shrink: 0;
+  text-decoration: none;
 }
 
 .logo-img-header {
   height: 48px;
   width: auto;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(26, 100, 196, 0.12);
 }
 
 .logo-text {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 .logo-title {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.35rem;
+  font-size: 1.32rem;
   font-weight: 800;
   color: var(--primary-dark);
   line-height: 1.1;
   letter-spacing: -0.3px;
+  white-space: nowrap;
 }
 
 .logo-sub {
@@ -429,20 +436,24 @@ p {
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: var(--accent-orange);
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.65rem;
+  flex-shrink: 1;
 }
 
 .nav-links a {
-  font-size: 0.94rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--text-dark);
   position: relative;
   padding: 0.4rem 0;
+  white-space: nowrap;
+  letter-spacing: 0.1px;
 }
 
 .nav-links a:hover {
@@ -455,8 +466,9 @@ p {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
-  background-color: var(--accent-orange);
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--accent-orange), #ff9933);
+  border-radius: 2px;
   transition: var(--transition);
 }
 
@@ -467,8 +479,57 @@ p {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
+
+/* Intermediate Laptop/Tablet Navbar handling */
+@media (max-width: 1200px) {
+  .nav-container {
+    gap: 1.25rem;
+  }
+  .nav-links {
+    gap: 1.15rem;
+  }
+  .nav-links a {
+    font-size: 0.86rem;
+  }
+  .logo-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .mobile-toggle {
+    display: block !important;
+  }
+  .nav-actions {
+    display: none !important;
+  }
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    flex-direction: column;
+    padding: 2.25rem 1.75rem;
+    gap: 1.35rem;
+    box-shadow: 0 20px 40px rgba(11, 47, 92, 0.15);
+    border-bottom: 2px solid var(--accent-orange);
+    transform: translateY(-160%);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
+  }
+  .nav-links.active {
+    transform: translateY(0);
+  }
+  .nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+}
+
 
 /* Mobile Hamburger */
 .mobile-toggle {
@@ -2024,27 +2085,7 @@ p {
   h3 { font-size: 1.2rem; }
   
   .section-padding { padding: 2.5rem 0; }
-  
-  .mobile-toggle { display: block; }
-  .nav-actions { display: none; }
-  
-  .nav-links {
-    position: fixed;
-    top: 65px;
-    left: 0;
-    width: 100%;
-    background: var(--white);
-    flex-direction: column;
-    padding: 2rem 1.5rem;
-    gap: 1.25rem;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    transform: translateY(-150%);
-    transition: var(--transition);
-  }
-  
-  .nav-links.active {
-    transform: translateY(0);
-  }
+
 
   /* ====================================================
      HERO SECTION ON MOBILE (Clean & Compact)
