@@ -6,10 +6,10 @@
   <title>ACE Workforce Solutions | Digital-First Recruitment Agency in Hyderabad</title>
   <meta name="description" content="Specialist recruitment agency in Hyderabad helping businesses find and hire technical, skilled and semi-skilled professionals across India for manufacturing, automotive, engineering, and logistics.">
   
-  <!-- Google Fonts: Playfair Display & Inter -->
+  <!-- Google Fonts: Poppins, Google Sans & DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -586,20 +586,21 @@ _Submitted via ACE Candidate Portal_`;
               </div>
 
               <div className="hero-content">
-                <span className="section-tag blue">
-                  <i className="fa-solid fa-bolt"></i> Digital-First Recruitment Agency in Hyderabad
-                </span>
+                <div className="hero-badge-container">
+                  <span className="section-tag blue hero-highlight-tag">
+                    <i className="fa-solid fa-bolt"></i> Digital-First Recruitment Agency in Hyderabad
+                  </span>
+                </div>
                 
-                <h1>
-                  Hyderabad Hiring. <br />
-                  <span className="highlight">Nationwide Talent Sourcing.</span>
+                <h1 className="hero-main-title">
+                  Specialist Recruitment for <span className="highlight">Technical, Skilled &amp; Semi-Skilled</span> Talent
                 </h1>
                 
                 <p className="lead-text">
                   <strong>ACE Workforce Solutions</strong> is a specialist recruitment agency in Hyderabad helping businesses find and hire <strong>technical, skilled and semi-skilled professionals</strong> for manufacturing, automotive, engineering, industrial, aerospace &amp; defence, and warehouse &amp; logistics roles.
                 </p>
                 
-                <p>
+                <p className="hero-secondary-desc">
                   We source suitable candidates across India and use a combination of <em>digital-first candidate acquisition</em>, <em>proactive sourcing</em> and <em>structured screening</em> to help employers find relevant talent for difficult-to-fill, critical and recurring positions.
                 </p>
                 
@@ -655,8 +656,8 @@ _Submitted via ACE Candidate Portal_`;
                   <button className="btn btn-lg btn-orange" onClick={() => setShowEmployerModal(true)}>
                     <i className="fa-solid fa-user-plus"></i> Hire Talent &rarr;
                   </button>
-                  <button className="btn btn-lg btn-outline-dark" onClick={() => setShowEmployerModal(true)}>
-                    <i className="fa-solid fa-file-invoice"></i> Submit a Hiring Requirement &rarr;
+                  <button className="btn btn-lg btn-outline-dark" onClick={() => setShowCandidateModal(true)}>
+                    <i className="fa-solid fa-briefcase"></i> Find Job &rarr;
                   </button>
                 </div>
               </div>
@@ -1513,6 +1514,9 @@ _Submitted via ACE Candidate Portal_`;
               <div className="footer-bottom">
                 <div>
                   Copyright &copy; 2026 ACE Workforce Solutions. All rights reserved.
+                </div>
+                <div className="footer-powered-by">
+                  Powered By: <strong>V H Global Technologies Pvt Ltd</strong>
                 </div>
                 <div>
                   Specialist Industrial Recruitment &bull; Hyderabad, India &bull; Digital-First Portal

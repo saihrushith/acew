@@ -54,7 +54,8 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
   color: var(--text-dark);
   background-color: var(--white);
   line-height: 1.65;
@@ -111,28 +112,42 @@ ul, ol {
   gap: 1.5rem;
 }
 
-/* Typography */
-h1, h2, h3, h4, .brand-font {
-  font-family: 'Playfair Display', Georgia, serif;
+/* ==========================================================================
+   TYPOGRAPHY - POPPINS SYSTEM
+   Main Headings (h1, h2, brand): Bold (700 / 800)
+   Sub Headings (h3, h4, h5): Semi-Bold (600)
+   Body / Paragraphs: Regular (400)
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6, .brand-font {
+  font-family: 'Poppins', sans-serif;
   color: var(--primary-dark);
+  line-height: 1.25;
+}
+
+/* Main Headings: Bold */
+h1, h2 {
   font-weight: 700;
-  line-height: 1.2;
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 3.1rem;
   letter-spacing: -0.5px;
   margin-bottom: 1.25rem;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   letter-spacing: -0.3px;
   margin-bottom: 1rem;
 }
 
+/* Sub Headings: Semi-Bold */
+h3, h4, h5 {
+  font-weight: 600;
+}
+
 h3 {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   margin-bottom: 0.6rem;
 }
 
@@ -140,30 +155,34 @@ h4 {
   font-size: 1.15rem;
 }
 
+/* Body: Regular */
 p {
-  font-size: 1.05rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1.02rem;
   color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
 .lead-text {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
+/* Section Tags / Badges */
 .section-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   color: var(--accent-orange);
   background: var(--accent-orange-light);
-  padding: 0.35rem 0.9rem;
+  padding: 0.4rem 1.1rem;
   border-radius: 50px;
   margin-bottom: 1rem;
   border: 1px solid rgba(255, 119, 0, 0.2);
@@ -181,6 +200,41 @@ p {
   border-color: rgba(16, 185, 129, 0.2);
 }
 
+/* Hero Badge Highlight */
+.hero-badge-container {
+  margin-bottom: 1.25rem;
+}
+
+.hero-highlight-tag {
+  font-size: 0.96rem;
+  font-weight: 700;
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(26, 100, 196, 0.12), rgba(255, 119, 0, 0.12));
+  border: 2px solid rgba(26, 100, 196, 0.35);
+  color: var(--primary-dark);
+  box-shadow: 0 6px 20px rgba(26, 100, 196, 0.12);
+  letter-spacing: 0.8px;
+  animation: badgeGlow 3s ease-in-out infinite alternate;
+}
+
+.hero-highlight-tag i {
+  color: var(--accent-orange);
+  font-size: 1.1rem;
+}
+
+@keyframes badgeGlow {
+  0% { box-shadow: 0 4px 14px rgba(26, 100, 196, 0.15); border-color: rgba(26, 100, 196, 0.3); }
+  100% { box-shadow: 0 6px 22px rgba(255, 119, 0, 0.25); border-color: rgba(255, 119, 0, 0.45); }
+}
+
+.hero-main-title {
+  font-size: 2.85rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
 .highlight {
   position: relative;
   display: inline-block;
@@ -191,10 +245,10 @@ p {
 .highlight::after {
   content: '';
   position: absolute;
-  bottom: 8px;
+  bottom: 6px;
   left: 0;
   width: 100%;
-  height: 14px;
+  height: 12px;
   background: linear-gradient(90deg, var(--accent-orange-light), #ffd2a6);
   opacity: 0.7;
   z-index: -1;
@@ -207,7 +261,7 @@ p {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.98rem;
   font-weight: 600;
   padding: 0.85rem 1.75rem;
@@ -218,6 +272,7 @@ p {
   text-decoration: none;
   white-space: nowrap;
 }
+
 
 .btn-primary {
   background-color: var(--primary-color);
@@ -360,7 +415,7 @@ p {
 }
 
 .logo-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--primary-dark);
@@ -826,7 +881,7 @@ p {
 .stat-item:nth-child(4) .stat-icon-wrap { background: var(--accent-blue-light); color: var(--primary-dark); }
 
 .stat-number {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--primary-dark);
@@ -897,7 +952,7 @@ p {
 }
 
 .difference-punchline {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--accent-orange);
@@ -937,7 +992,7 @@ p {
 
 .who-floating-badge h4 {
   color: var(--accent-orange);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   margin-bottom: 0.35rem;
 }
@@ -971,7 +1026,7 @@ p {
   padding: 0.9rem 1.25rem 0.9rem 3rem;
   border-radius: 50px;
   border: 1px solid var(--border-color);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   background: var(--white);
   box-shadow: 0 4px 12px rgba(26, 100, 196, 0.05);
@@ -1346,7 +1401,7 @@ p {
   border-radius: 18px;
   background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   color: var(--white);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   display: flex;
@@ -1481,7 +1536,7 @@ p {
 }
 
 .problem-quote {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.25rem;
   font-style: italic;
   font-weight: 600;
@@ -1738,7 +1793,7 @@ p {
 }
 
 .scenario-num {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--accent-orange);
@@ -1785,7 +1840,7 @@ p {
   text-align: left;
   background: none;
   border: none;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--primary-dark);
@@ -1802,7 +1857,7 @@ p {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--primary-color);
   transition: var(--transition);
   flex-shrink: 0;
@@ -1903,7 +1958,7 @@ p {
 }
 
 .manifesto-quote {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1.35;
@@ -1960,7 +2015,7 @@ p {
 
 .footer-col h4 {
   color: var(--white);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1989,6 +2044,24 @@ p {
   justify-content: space-between;
   align-items: center;
   font-size: 0.88rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-powered-by {
+  color: #a4c0e3;
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.3px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-powered-by strong {
+  color: var(--accent-orange);
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -2077,7 +2150,7 @@ p {
   padding: 0.8rem 1rem;
   border-radius: var(--border-radius-sm);
   border: 1px solid var(--border-color);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   transition: var(--transition);
 }
@@ -2182,10 +2255,21 @@ p {
     box-shadow: 0 15px 35px -5px rgba(26, 100, 196, 0.12);
   }
 
+  .hero-main-title {
+    font-size: 1.95rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Hide secondary paragraph on mobile */
+  .hero-secondary-desc {
+    display: none;
+  }
+
   /* Reveal the modern dynamic Candidate Slideshow on mobile */
   .hero-mobile-slideshow {
     display: block;
   }
+
 
   .hero-buttons {
     flex-direction: column;
