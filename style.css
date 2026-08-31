@@ -1913,7 +1913,7 @@ p {
   border-radius: 50px;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--accent-orange);
+  color: #ffffff;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -1921,8 +1921,9 @@ p {
 
 .manifesto-pill .pill-num {
   font-weight: 800;
-  color: var(--white);
+  color: #ffffff;
 }
+
 
 
 /* ==========================================================================
