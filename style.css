@@ -1507,19 +1507,20 @@ p {
    ========================================================================== */
 .geo-container {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 3.5rem;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3rem;
   align-items: center;
 }
 
 .radar-card-wrap {
   background: var(--white);
   border-radius: var(--border-radius-lg);
-  padding: 2rem;
+  padding: 2.2rem;
   box-shadow: var(--card-shadow-hover);
   border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .radar-header {
@@ -1529,38 +1530,58 @@ p {
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border-color);
+  gap: 1rem;
 }
 
 .hub-corridors-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .corridor-pill {
   background: var(--bg-alt);
-  padding: 0.85rem 1rem;
-  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--border-color);
+  gap: 0.75rem;
+  transition: var(--transition);
+}
+
+.corridor-pill:hover {
+  border-color: var(--primary-color);
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(26, 100, 196, 0.08);
 }
 
 .corridor-pill .source-city {
   font-weight: 700;
   color: var(--primary-dark);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .corridor-pill .dest-pill {
   background: var(--primary-color);
   color: var(--white);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  padding: 0.2rem 0.55rem;
-  border-radius: 4px;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
+
 
 /* ==========================================================================
    WHAT MAKES ACE DIFFERENT (COMPARISON TABLE / CARDS)
@@ -1869,7 +1890,16 @@ p {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--accent-orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
+
+.manifesto-pill .pill-num {
+  font-weight: 800;
+  color: var(--white);
+}
+
 
 /* ==========================================================================
    FOOTER
