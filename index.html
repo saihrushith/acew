@@ -63,7 +63,7 @@
         title: "Maintenance & Electrical Recruitment",
         subtitle: "Preventive, breakdown & plant equipment uptime",
         icon: "fa-wrench",
-        colorClass: "card-green",
+        colorClass: "card-blue",
         roles: [
           "Mechanical Maintenance Technicians", "Industrial Maintenance Technicians",
           "Electrical Technicians", "Electrical Maintenance Technicians",
@@ -761,7 +761,7 @@ _Submitted via ACE Candidate Portal_`;
           <section className="section-padding bg-alt" id="industries">
             <div className="container">
               <div className="text-center" style={{ maxWidth: "820px", margin: "0 auto" }}>
-                <span className="section-tag emerald">
+                <span className="section-tag blue">
                   <i className="fa-solid fa-city"></i> Sector Coverage
                 </span>
                 <h2>Which Industries Does ACE Recruit For?</h2>
@@ -808,15 +808,10 @@ _Submitted via ACE Candidate Portal_`;
                     For many industrial roles, <strong>two candidates can have the exact same job title but completely different capabilities</strong>.
                   </p>
                   <p>
-                    Consider a CNC Machinist. An employer may need someone with experience in specific machines, setups, materials, and tolerances that generic job boards completely overlook.
+                    A job title alone doesn't clarify whether someone is an operator, a setter, a programmer, or whether their experience fits a specific manufacturing setup.
                   </p>
-                  <p>
-                    The same applies to welders, maintenance technicians, production operators and other skilled roles.
-                  </p>
-                  <div style={{ padding: "1.25rem 1.5rem", background: "var(--white)", borderRadius: "var(--border-radius)", borderLeft: "4px solid var(--accent-orange)", boxShadow: "var(--card-shadow)", marginTop: "1.5rem" }}>
-                    <p style={{ margin: 0, fontWeight: 700, color: "var(--primary-color)", fontSize: "1.1rem" }}>
-                      That's why ACE starts with the actual requirement—not just the job title.
-                    </p>
+                  <div className="difference-punchline">
+                    "Recruiting successfully means matching the actual work, not matching the job title."
                   </div>
                 </div>
 
@@ -843,8 +838,8 @@ _Submitted via ACE Candidate Portal_`;
                   </div>
 
                   <div style={{ marginTop: "1.25rem", paddingTop: "1rem", borderTop: "1px solid var(--border-color)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "#065f46" }}>
-                      <i className="fa-solid fa-check-double green-text"></i> Pre-Screened for Exact Fit
+                    <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--primary-color)" }}>
+                      <i className="fa-solid fa-check-double" style={{ color: "var(--accent-orange)" }}></i> Pre-Screened for Exact Fit
                     </span>
                     <button className="btn btn-sm btn-orange" onClick={() => setShowEmployerModal(true)}>
                       Hire Machinists
@@ -1024,7 +1019,7 @@ _Submitted via ACE Candidate Portal_`;
             <div className="container">
               <div className="geo-container">
                 <div>
-                  <span className="section-tag emerald">
+                  <span className="section-tag blue">
                     <i className="fa-solid fa-map-pin"></i> Geographic Advantage
                   </span>
                   <h2>Hyderabad Hiring. Nationwide Talent.</h2>
@@ -1053,7 +1048,7 @@ _Submitted via ACE Candidate Portal_`;
                       <h4 style={{ color: "var(--primary-color)", fontSize: "1.1rem", margin: 0 }}>Active Sourcing Corridors</h4>
                       <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Industrial talent streams into Hyderabad</span>
                     </div>
-                    <span className="section-tag emerald" style={{ margin: 0 }}>Live Network</span>
+                    <span className="section-tag blue" style={{ margin: 0 }}>Live Network</span>
                   </div>
 
                   <div className="hub-corridors-grid">
@@ -1062,7 +1057,7 @@ _Submitted via ACE Candidate Portal_`;
                       <span className="dest-pill">&rarr; Hyd</span>
                     </div>
                     <div className="corridor-pill">
-                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#10b981" }}></i> Chennai Auto/Mfg</span>
+                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#0b2f5c" }}></i> Chennai Auto/Mfg</span>
                       <span className="dest-pill">&rarr; Hyd</span>
                     </div>
                     <div className="corridor-pill">
@@ -1078,18 +1073,19 @@ _Submitted via ACE Candidate Portal_`;
                       <span className="dest-pill">&rarr; Hyd</span>
                     </div>
                     <div className="corridor-pill">
-                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#ef4444" }}></i> NCR Engineering</span>
+                      <span className="source-city"><i className="fa-solid fa-city" style={{ color: "#165b9e" }}></i> NCR Engineering</span>
                       <span className="dest-pill">&rarr; Hyd</span>
                     </div>
                   </div>
 
                   <div style={{ marginTop: "1.25rem", fontSize: "0.82rem", color: "var(--text-muted)", textAlign: "center" }}>
-                    <i className="fa-solid fa-circle-check green-text"></i> Screened for willingness to relocate, salary alignment, and immediate availability.
+                    <i className="fa-solid fa-circle-check" style={{ color: "var(--primary-color)" }}></i> Screened for willingness to relocate, salary alignment, and immediate availability.
                   </div>
                 </div>
               </div>
             </div>
           </section>
+
 
           {/* ==========================================
                WHAT MAKES ACE DIFFERENT? (COMPARISON)
@@ -1275,7 +1271,6 @@ _Submitted via ACE Candidate Portal_`;
                     <div className="checklist-item"><i className="fa-solid fa-check check-orange"></i> The number of positions.</div>
                     <div className="checklist-item"><i className="fa-solid fa-check check-orange"></i> The experience needed.</div>
                     <div className="checklist-item"><i className="fa-solid fa-check check-orange"></i> When you need them.</div>
-                  </div>
                   <p style={{ fontSize: "0.95rem", color: "#e2e8f0" }}>We'll understand the requirement and build the candidate search around it.</p>
 
                   <div style={{ marginTop: "auto" }}>
@@ -1287,7 +1282,7 @@ _Submitted via ACE Candidate Portal_`;
 
                 {/* For Candidates */}
                 <div className="dual-card candidate-card">
-                  <span className="section-tag emerald" style={{ width: "fit-content", background: "#d1fae5", color: "#065f46" }}>For Candidates</span>
+                  <span className="section-tag blue" style={{ width: "fit-content" }}>For Candidates</span>
                   <h2>Looking for Your Next Opportunity in Hyderabad?</h2>
                   <p>
                     ACE connects engineers, technicians, skilled workers and semi-skilled professionals with relevant opportunities across Hyderabad's manufacturing, engineering, industrial and logistics sectors.
@@ -1302,7 +1297,7 @@ _Submitted via ACE Candidate Portal_`;
                   </div>
 
                   <div style={{ marginTop: "auto" }}>
-                    <button className="btn btn-emerald" style={{ width: "100%" }} onClick={() => setShowCandidateModal(true)}>
+                    <button className="btn btn-orange" style={{ width: "100%" }} onClick={() => setShowCandidateModal(true)}>
                       <i className="fa-brands fa-whatsapp"></i> Submit Your Profile &rarr;
                     </button>
                   </div>
@@ -1328,8 +1323,9 @@ _Submitted via ACE Candidate Portal_`;
                   <span className="manifesto-pill"><i className="fa-solid fa-2"></i> Expand the search.</span>
                   <span className="manifesto-pill"><i className="fa-solid fa-3"></i> Reach the right talent.</span>
                   <span className="manifesto-pill"><i className="fa-solid fa-4"></i> Screen for relevance.</span>
-                  <span className="manifesto-pill"><i className="fa-solid fa-5"></i> Build the shortlist.</span>
-                  <span className="manifesto-pill"><i className="fa-solid fa-6"></i> Support the hire.</span>
+                  <span className="manifesto-pill"><i className="fa-solid fa-5"></i> Present relevant candidates.</span>
+                  <span className="manifesto-pill"><i className="fa-solid fa-6"></i> Follow through.</span>
+                  <span className="manifesto-pill"><i className="fa-solid fa-7"></i> Improve hiring outcomes.</span>
                 </div>
 
                 <div style={{ marginTop: "3rem" }}>
@@ -1348,57 +1344,60 @@ _Submitted via ACE Candidate Portal_`;
             <div className="container">
               <div className="footer-top-grid">
                 <div className="footer-brand">
-                  <div className="logo-wrap" style={{ marginBottom: "1rem" }}>
-                    <img src="assets/logo.jpeg" alt="ACE Workforce Solutions Logo" className="logo-img-header" />
+                  <div className="logo-wrap" style={{ marginBottom: "1.25rem" }}>
+                    <img src="assets/logo.jpeg" alt="ACE Workforce Solutions" className="logo-img-header" />
                     <div className="logo-text">
                       <span className="logo-title" style={{ color: "var(--white)" }}>ACE Workforce</span>
                       <span className="logo-sub">Workforce Solutions</span>
                     </div>
                   </div>
                   <p>
-                    <strong>ACE Workforce Solutions</strong><br />
-                    Digital-First Specialist Recruitment for Hyderabad Businesses
+                    Specialist recruitment agency in Hyderabad helping businesses find and hire technical, skilled and semi-skilled talent across India.
                   </p>
-                  <p style={{ fontSize: "0.85rem", color: "#cbd5e1" }}>
-                    Technical Talent | Skilled Talent | Semi-Skilled Talent<br />
-                    Hyderabad Recruitment | India-Wide Candidate Sourcing<br />
-                    Manufacturing | Automotive | Engineering | Industrial | Aerospace &amp; Defence | Warehouse &amp; Logistics
-                  </p>
+                  <div style={{ display: "flex", gap: "1rem", color: "var(--accent-orange)", fontSize: "1.2rem" }}>
+                    <i className="fa-solid fa-shield-halved" title="Verified Profiles"></i>
+                    <i className="fa-solid fa-bolt" title="Digital-First Sourcing"></i>
+                    <i className="fa-solid fa-location-dot" title="Hyderabad Hub"></i>
+                    <i className="fa-brands fa-whatsapp" title="WhatsApp Connected"></i>
+                  </div>
                 </div>
 
                 <div className="footer-col">
-                  <h4>Sectors</h4>
+                  <h4>Quick Links</h4>
                   <ul>
-                    <li><a href="#industries">Automotive &amp; Auto Components</a></li>
-                    <li><a href="#industries">Precision Manufacturing</a></li>
-                    <li><a href="#industries">Engineering &amp; Machinery</a></li>
-                    <li><a href="#industries">Industrial Equipment &amp; Fabrication</a></li>
-                    <li><a href="#industries">Aerospace &amp; Defence Suppliers</a></li>
-                    <li><a href="#industries">Warehouse &amp; Logistics</a></li>
+                    <li><a href="#who-we-are">Who We Are</a></li>
+                    <li><a href="#what-we-do">Specialisations</a></li>
+                    <li><a href="#industries">Industries</a></li>
+                    <li><a href="#how-we-recruit">Our Process</a></li>
+                    <li><a href="#why-ace">Why ACE</a></li>
+                    <li><a href="#comparison">Our Edge</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                   </ul>
                 </div>
 
                 <div className="footer-col">
-                  <h4>Specialisations</h4>
+                  <h4>Key Roles</h4>
                   <ul>
-                    <li><a href="#what-we-do">Engineering &amp; Technical</a></li>
-                    <li><a href="#what-we-do">CNC &amp; Precision Machining</a></li>
-                    <li><a href="#what-we-do">Maintenance &amp; Electrical</a></li>
-                    <li><a href="#what-we-do">Welding &amp; Fabrication</a></li>
-                    <li><a href="#what-we-do">Production &amp; Assembly</a></li>
-                    <li><a href="#what-we-do">Quality &amp; Inspection</a></li>
+                    <li><a href="#what-we-do">CNC &amp; VMC Operators</a></li>
+                    <li><a href="#what-we-do">Maintenance Technicians</a></li>
+                    <li><a href="#what-we-do">TIG / MIG Welders</a></li>
+                    <li><a href="#what-we-do">QC &amp; CMM Inspectors</a></li>
+                    <li><a href="#what-we-do">Production Operators</a></li>
+                    <li><a href="#what-we-do">Core Engineers</a></li>
                   </ul>
                 </div>
 
                 <div className="footer-col">
-                  <h4>Quick Connect</h4>
-                  <p style={{ fontSize: "0.88rem", marginBottom: "1rem" }}>
-                    Direct WhatsApp Helpline &bull; Active Daily<br />
-                    <strong style={{ color: "var(--accent-orange)" }}>Instant Recruiter Response</strong>
+                  <h4>Recruitment Desk</h4>
+                  <p style={{ fontSize: "0.92rem", marginBottom: "0.85rem" }}>
+                    <i className="fa-solid fa-location-dot" style={{ color: "var(--accent-orange)" }}></i> Hyderabad, Telangana, India
+                  </p>
+                  <p style={{ fontSize: "0.92rem", marginBottom: "1.25rem" }}>
+                    <i className="fa-solid fa-headset" style={{ color: "var(--accent-orange)" }}></i> Direct WhatsApp Candidate &amp; Employer Desk
                   </p>
                   <button 
                     className="btn btn-sm btn-orange" 
-                    style={{ width: "100%", marginBottom: "0.75rem" }} 
+                    style={{ width: "100%", marginBottom: "0.6rem" }} 
                     onClick={() => setShowEmployerModal(true)}
                   >
                     <i className="fa-brands fa-whatsapp"></i> Hire Talent
@@ -1509,7 +1508,7 @@ _Submitted via ACE Candidate Portal_`;
           <div className={`modal-overlay ${showCandidateModal ? "active" : ""}`}>
             <div className="modal-container">
               <button className="modal-close" onClick={() => setShowCandidateModal(false)}>&times;</button>
-              <span className="section-tag emerald" style={{ marginBottom: "0.5rem" }}>
+              <span className="section-tag blue" style={{ marginBottom: "0.5rem" }}>
                 <i className="fa-brands fa-whatsapp"></i> Direct Candidate Registration
               </span>
               <h2 style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>Submit Your Profile</h2>
@@ -1565,7 +1564,7 @@ _Submitted via ACE Candidate Portal_`;
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn btn-emerald" style={{ width: "100%", marginTop: "0.5rem" }}>
+                <button type="submit" className="btn btn-orange" style={{ width: "100%", marginTop: "0.5rem" }}>
                   <i className="fa-brands fa-whatsapp"></i> Send Profile to WhatsApp &rarr;
                 </button>
               </form>

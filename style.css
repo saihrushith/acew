@@ -195,10 +195,11 @@ p {
 }
 
 .section-tag.emerald {
-  color: #065f46;
-  background: var(--accent-green-light);
-  border-color: rgba(16, 185, 129, 0.2);
+  color: var(--primary-color);
+  background: var(--accent-blue-light);
+  border-color: rgba(26, 100, 196, 0.2);
 }
+
 
 /* Hero Badge Highlight */
 .hero-badge-container {
@@ -302,17 +303,18 @@ p {
 }
 
 .btn-emerald {
-  background-color: var(--accent-green);
+  background-color: var(--accent-orange);
   color: var(--white);
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 14px rgba(255, 119, 0, 0.3);
 }
 
 .btn-emerald:hover {
-  background-color: #059669;
+  background-color: var(--accent-orange-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.45);
+  box-shadow: 0 8px 22px rgba(255, 119, 0, 0.45);
   color: var(--white);
 }
+
 
 .btn-outline-dark {
   background: rgba(255, 255, 255, 0.15);
@@ -761,8 +763,9 @@ p {
 
 .stat-item:nth-child(1) .stat-icon-wrap { background: var(--accent-blue-light); color: var(--primary-color); }
 .stat-item:nth-child(2) .stat-icon-wrap { background: var(--accent-orange-light); color: var(--accent-orange); }
-.stat-item:nth-child(3) .stat-icon-wrap { background: var(--accent-green-light); color: #065f46; }
-.stat-item:nth-child(4) .stat-icon-wrap { background: var(--accent-blue-light); color: var(--primary-dark); }
+.stat-item:nth-child(3) .stat-icon-wrap { background: var(--accent-blue-light); color: var(--primary-color); }
+.stat-item:nth-child(4) .stat-icon-wrap { background: var(--accent-orange-light); color: var(--accent-orange); }
+
 
 .stat-number {
   font-family: 'Poppins', sans-serif;
