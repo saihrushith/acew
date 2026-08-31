@@ -88,7 +88,7 @@ ul, ol {
 }
 
 .section-padding {
-  padding: 5.5rem 0;
+  padding: 3.25rem 0;
 }
 
 .text-center { text-align: center; }
@@ -495,7 +495,7 @@ p {
    ========================================================================== */
 .hero {
   position: relative;
-  padding: 4.5rem 0 5.5rem;
+  padding: 3rem 0 3.5rem;
   background: radial-gradient(circle at 50% 15%, rgba(232, 242, 255, 0.9) 0%, rgba(255, 255, 255, 1) 75%);
   overflow: hidden;
 }
@@ -527,7 +527,7 @@ p {
 .hero-container {
   position: relative;
   z-index: 1;
-  min-height: 540px;
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -551,7 +551,7 @@ p {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 3rem 2.5rem;
+  padding: 2.5rem 2.2rem;
   border-radius: var(--border-radius-lg);
   box-shadow: 0 20px 40px -10px rgba(26, 100, 196, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.95);
@@ -562,9 +562,10 @@ p {
   align-items: center;
   justify-content: center;
   gap: 1.1rem;
-  margin-top: 2rem;
+  margin-top: 1.6rem;
   flex-wrap: wrap;
 }
+
 
 /* Floating Squircle Profile Cards */
 .hero-card {
@@ -664,189 +665,11 @@ p {
   50% { transform: translateY(-16px) rotate(1deg); }
 }
 
-/* Dynamic Mobile Hero Candidate Slideshow Card */
-.hero-mobile-slideshow {
-  display: none;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(26, 100, 196, 0.2);
-  border-radius: var(--border-radius-lg);
-  padding: 1.15rem 1rem 0.9rem;
-  margin: 1.5rem 0 1.25rem;
-  box-shadow: 0 12px 30px rgba(26, 100, 196, 0.12);
-  text-align: left;
-}
-
-.slideshow-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px dashed rgba(26, 100, 196, 0.18);
-}
-
-.slideshow-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--primary-dark);
-}
-
-.live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  display: inline-block;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
-  animation: pulseDot 1.8s infinite;
-}
-
-@keyframes pulseDot {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-.slideshow-count {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  background: var(--bg-alt);
-  padding: 0.15rem 0.5rem;
-  border-radius: 12px;
-}
-
-.slideshow-card-box {
-  position: relative;
-  min-height: 86px;
-}
-
-.slide-item {
-  display: none;
-  align-items: center;
-  gap: 0.95rem;
-  animation: fadeInSlide 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.slide-item.active {
-  display: flex;
-}
-
-@keyframes fadeInSlide {
-  from { opacity: 0; transform: translateY(6px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.slide-avatar-wrap {
-  position: relative;
-  width: 68px;
-  height: 68px;
-  flex-shrink: 0;
-}
-
-.slide-avatar-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 18px;
-  object-fit: cover;
-  border: 2.5px solid var(--primary-color);
-  box-shadow: 0 6px 14px rgba(26, 100, 196, 0.25);
-}
-
-.slide-verified-badge {
-  position: absolute;
-  bottom: -4px;
-  right: -4px;
-  background: #ffffff;
-  color: #10b981;
-  font-size: 0.85rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-}
-
-.slide-details {
-  flex: 1;
-  min-width: 0;
-}
-
-.slide-top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.4rem;
-  margin-bottom: 0.2rem;
-  flex-wrap: wrap;
-}
-
-.slide-name {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--primary-dark);
-}
-
-.slide-tag-pill {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #c25700;
-  background: var(--accent-orange-light);
-  padding: 0.15rem 0.5rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 119, 0, 0.25);
-}
-
-.slide-role {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--accent-orange);
-  margin-bottom: 0.25rem;
-}
-
-.slide-loc {
-  display: block;
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.slideshow-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  margin-top: 0.85rem;
-}
-
-.slide-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(26, 100, 196, 0.25);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.slide-dot.active {
-  width: 24px;
-  border-radius: 10px;
-  background: var(--accent-orange);
-}
-
 /* Hero Stats Ticker */
-
 .hero-stats-banner {
-  margin-top: 3.5rem;
+  margin-top: 2rem;
   background: var(--white);
+
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
   border: 1px solid var(--border-color);
@@ -2197,10 +2020,10 @@ p {
 
 @media (max-width: 768px) {
   h1 { font-size: 1.85rem; line-height: 1.25; }
-  h2 { font-size: 1.6rem; }
+  h2 { font-size: 1.55rem; }
   h3 { font-size: 1.2rem; }
   
-  .section-padding { padding: 3.5rem 0; }
+  .section-padding { padding: 2.5rem 0; }
   
   .mobile-toggle { display: block; }
   .nav-actions { display: none; }
@@ -2224,10 +2047,10 @@ p {
   }
 
   /* ====================================================
-     HERO SECTION ON MOBILE (Clean Slideshow Showcase)
+     HERO SECTION ON MOBILE (Clean & Compact)
      ==================================================== */
   .hero { 
-    padding: 3rem 0 3.5rem; 
+    padding: 2.25rem 0 2.5rem; 
   }
   
   .hero-container {
@@ -2240,7 +2063,7 @@ p {
     width: 100%;
   }
 
-  /* Hide individual absolute corner cards on mobile to avoid overcrowding */
+  /* Hide floating corner cards on mobile to avoid overcrowding */
   .hero-side-cards {
     display: none;
   }
@@ -2248,7 +2071,7 @@ p {
   .hero-content {
     position: relative;
     z-index: 2;
-    padding: 2rem 1.25rem;
+    padding: 1.75rem 1.25rem;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
@@ -2256,18 +2079,13 @@ p {
   }
 
   .hero-main-title {
-    font-size: 1.95rem;
-    margin-bottom: 1rem;
+    font-size: 1.85rem;
+    margin-bottom: 0.85rem;
   }
 
   /* Hide secondary paragraph on mobile */
   .hero-secondary-desc {
     display: none;
-  }
-
-  /* Reveal the modern dynamic Candidate Slideshow on mobile */
-  .hero-mobile-slideshow {
-    display: block;
   }
 
 
