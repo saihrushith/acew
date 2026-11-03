@@ -223,3 +223,30 @@ h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.2; font-weight: 700; colo
   body.sheet-open .sheet-overlay { opacity: 1; pointer-events: auto; }
   body.sheet-open .mbar { visibility: hidden; }
 }
+/* ===== animations (like the visa page) ===== */
+@media (prefers-reduced-motion: no-preference) {
+  /* hero: headline words rise in one by one, the gold words shimmer, the rest fades up */
+  html.anim .hero h1 .w { display: inline-block; opacity: 0; transform: translateY(.5em); animation: a-word .7s var(--ease) forwards; animation-delay: calc(var(--i) * .08s + .1s); }
+  html.anim .hero h1 .gold .w { background: linear-gradient(100deg, #c9a227 0%, #f3dc8a 45%, #c9a227 70%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: a-word .7s var(--ease) forwards, a-shine 4.5s linear 1.6s infinite; animation-delay: calc(var(--i) * .08s + .1s), 1.6s; }
+  html.anim .hero .kicker, html.anim .hero__copy > p, html.anim .hero__cta, html.anim .hero__links { opacity: 0; transform: translateY(16px); animation: a-rise .7s var(--ease) forwards; }
+  html.anim .hero .kicker { animation-delay: .05s; }
+  html.anim .hero__copy > p:nth-of-type(2) { animation-delay: .75s; } html.anim .hero__copy > p:nth-of-type(3) { animation-delay: .9s; }
+  html.anim .hero__copy > p:nth-of-type(4) { animation-delay: 1.05s; } html.anim .hero__cta { animation-delay: 1.2s; } html.anim .hero__links { animation-delay: 1.35s; }
+  @media (min-width: 768px) { html.anim .hero__form .hform { opacity: 0; transform: translateY(24px) scale(.98); animation: a-rise .8s var(--ease) .5s forwards; } }
+  /* the rest of the page: reveal on scroll, staggered inside each group */
+  html.anim .rv { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: var(--d, 0s); }
+  html.anim .rv.is-in { opacity: 1; transform: none; }
+  html.anim .rv.is-in .steps__n { animation: a-pop .6s var(--ease) both; }
+  html.anim .rv.is-in .svcs__ic { animation: a-pop .6s var(--ease) both; }
+  html.anim .tag.rv.is-in { animation: a-tag .8s var(--ease) both; }
+  .card, .svc2__card, .service { transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 2px 4px rgba(11, 27, 51, .06), 0 24px 44px -22px rgba(33, 64, 154, .45); }
+  html.anim .rv.is-in.card:hover { transform: translateY(-5px); }
+  .chips li { transition: background-color .2s, border-color .2s, transform .2s var(--ease); }
+  .chips li:hover { background: #fff; border-color: var(--blue); transform: translateY(-2px); }
+  @keyframes a-word { to { opacity: 1; transform: none; } }
+  @keyframes a-rise { to { opacity: 1; transform: none; } }
+  @keyframes a-shine { to { background-position: -220% 0; } }
+  @keyframes a-pop { 0% { transform: scale(.4); } 70% { transform: scale(1.12); } 100% { transform: scale(1); } }
+  @keyframes a-tag { from { letter-spacing: .2em; } to { letter-spacing: .06em; } }
+}

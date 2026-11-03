@@ -107,3 +107,41 @@
   var onChange = function () { if (!mq.matches) close(); };
   if (mq.addEventListener) mq.addEventListener('change', onChange); else mq.addListener(onChange);
 })();
+
+/* animations */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var root = document.documentElement;
+  root.classList.add('anim');
+
+  // split the hero headline into words so they can rise one by one
+  var h1 = document.querySelector('.hero h1'), n = 0;
+  if (h1) {
+    (function split(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var s = document.createElement('span'); s.className = 'w'; s.style.setProperty('--i', n++); s.textContent = part; frag.appendChild(s);
+          });
+          node.replaceChild(frag, c);
+        } else if (c.nodeType === 1) split(c);
+      });
+    })(h1);
+  }
+
+  // scroll reveal, staggered inside each group
+  var sel = '.sec .head > *, .sec > .wrap > h2, .sec > .wrap > .tag, .narrow > *, .card, .svc2__card, .service > *, .chips li, .faq details, .two > *, .cta .wrap > *, .form-card, .center, .note';
+  var els = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function (el) { return !el.closest('.hero') && !el.closest('.foot') && !el.closest('.hero__form'); });
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }) : null;
+  els.forEach(function (el) {
+    var idx = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+    el.style.setProperty('--d', Math.min(idx, 7) * 0.07 + 's');
+    el.classList.add('rv');
+    if (io) io.observe(el); else el.classList.add('is-in');
+  });
+})();
