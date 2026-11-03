@@ -1,5 +1,5 @@
 
-:root { --blue: #21409a; --blue-50: #f3f6fb; --blue-200: #c9d6e8; --red: #ee1b24; --red-700: #c8141b; --gold: #c9a227; --ink: #0b1b33; --text: #2c3b52; --line: #e1e7f0; --f-d: "Montserrat", system-ui, sans-serif; --f-b: "Open Sans", system-ui, sans-serif; --ease: cubic-bezier(.22, 1, .36, 1); }
+:root { --blue: #21409a; --blue-50: #f3f6fb; --blue-200: #c9d6e8; --red: #ee1b24; --red-700: #c8141b; --gold: #ff6b72; --ink: #0b1b33; --text: #2c3b52; --line: #e1e7f0; --f-d: "Montserrat", system-ui, sans-serif; --f-b: "Open Sans", system-ui, sans-serif; --ease: cubic-bezier(.22, 1, .36, 1); }
 * { box-sizing: border-box; margin: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 body { font: 400 17px/1.7 var(--f-b); color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; overflow-x: clip; }
@@ -108,7 +108,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.2; font-weight: 700; colo
 .service--visa .chips li { background: #fff; }
 .ticks { display: grid; gap: 9px; padding: 0; margin: 0 0 4px; list-style: none; }
 .ticks li { position: relative; padding-left: 26px; }
-.ticks li::before { content: ""; position: absolute; left: 0; top: 10px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 10px; width: 9px; height: 9px; border-radius: 50%; background: var(--red); }
 .audience { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 @media (max-width: 760px) { .audience { grid-template-columns: 1fr; } }
 .note { margin-top: 22px; padding: 14px 18px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font-size: 14.5px; }
@@ -227,7 +227,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.2; font-weight: 700; colo
 @media (prefers-reduced-motion: no-preference) {
   /* hero: headline words rise in one by one, the gold words shimmer, the rest fades up */
   html.anim .hero h1 .w { display: inline-block; opacity: 0; transform: translateY(.5em); animation: a-word .7s var(--ease) forwards; animation-delay: calc(var(--i) * .08s + .1s); }
-  html.anim .hero h1 .gold .w { background: linear-gradient(100deg, #c9a227 0%, #f3dc8a 45%, #c9a227 70%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: a-word .7s var(--ease) forwards, a-shine 4.5s linear 1.6s infinite; animation-delay: calc(var(--i) * .08s + .1s), 1.6s; }
+  html.anim .hero h1 .gold .w { background: linear-gradient(100deg, #ff5a60 0%, #ffc2c5 45%, #ff5a60 70%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: a-word .7s var(--ease) forwards, a-shine 4.5s linear 1.6s infinite; animation-delay: calc(var(--i) * .08s + .1s), 1.6s; }
   html.anim .hero .kicker, html.anim .hero__copy > p, html.anim .hero__cta, html.anim .hero__links { opacity: 0; transform: translateY(16px); animation: a-rise .7s var(--ease) forwards; }
   html.anim .hero .kicker { animation-delay: .05s; }
   html.anim .hero__copy > p:nth-of-type(2) { animation-delay: .75s; } html.anim .hero__copy > p:nth-of-type(3) { animation-delay: .9s; }
