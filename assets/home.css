@@ -44,7 +44,7 @@ p + p { margin-top: 14px; }
 
 /* hero */
 .hero { position: relative; overflow: hidden; background: var(--blue); color: #fff; padding: clamp(40px, 6vw, 84px) 0; }
-.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 70% at 85% 10%, rgba(238,27,36,.28), transparent 60%), radial-gradient(55% 60% at 5% 100%, rgba(120,160,255,.28), transparent 60%), linear-gradient(135deg, #172d73 0%, #21409a 55%, #2d52b8 100%); }
+.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, rgba(18,36,98,.95) 0%, rgba(33,64,154,.86) 50%, rgba(33,64,154,.62) 100%), var(--hero-img) center / cover no-repeat; }
 .hero__in > * { position: relative; }
 .hero__copy { background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.22); border-radius: 22px; box-shadow: 0 24px 60px rgba(8,18,60,.35); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding: clamp(22px, 3vw, 40px); }
 .hero__in { position: relative; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
