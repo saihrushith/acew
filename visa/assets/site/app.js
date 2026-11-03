@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/suma@aarviko.com';
+  var FORM_ENDPOINT = (function () { var s = document.currentScript; return s && s.src ? new URL('../../../send.php', s.src).href : '/send.php'; })();
   var SVGNS = 'http://www.w3.org/2000/svg';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (s, r) { return (r || document).querySelector(s); };

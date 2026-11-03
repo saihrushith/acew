@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/suma@aarviko.com';
+  var FORM_ENDPOINT = (function () { var s = document.currentScript; return s && s.src ? new URL('../send.php', s.src).href : '/send.php'; })();
   window.dataLayer = window.dataLayer || [];
   function track(name, extra) { if (window.gtag) window.gtag('event', name, extra || {}); }
   function validate(f) {
