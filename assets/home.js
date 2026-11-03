@@ -36,7 +36,7 @@
     var btn = form.querySelector('button[type="submit"]'); btn.disabled = true;
     fetch(FORM_ENDPOINT, {
       method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ _subject: 'AARVIKO enquiry - ' + fd.get('name'), _template: 'table', _captcha: 'false', Name: fd.get('name'), Email: fd.get('email'), Phone: fd.get('phone'), Source: 'Home page enquiry form' })
+      body: JSON.stringify({ _subject: (form.dataset.subject || 'AARVIKO enquiry') + ' - ' + fd.get('name'), _template: 'table', _captcha: 'false', Name: fd.get('name'), Email: fd.get('email'), Phone: fd.get('phone'), Source: form.dataset.source || 'Home page enquiry form' })
     }).then(function (r) {
       if (!r.ok) throw new Error('send failed');
       form.classList.add('is-done'); form.reset(); track('generate_lead', { form_position: 'home_hero' });

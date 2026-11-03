@@ -189,7 +189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main id="main">
 
 <section class="hero hero--rec" id="home" aria-labelledby="hero-h">
-  <div class="wrap hero__in hero__in--one">
+  <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="kicker">AARVIKO Recruitment &bull; Hyderabad</p>
       <h1 id="hero-h">Find the Right Talent. <span class="gold">Discover the Right Career.</span></h1>
@@ -198,6 +198,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Whether you are an employer looking to build your team or a job seeker ready for your next career move, we are here to help.</p>
       <div class="hero__cta"><a class="btn btn--red" href="#employer-enquiry">For Businesses: Find the Right Talent <span aria-hidden="true">&rarr;</span></a><a class="btn btn--ghost" href="#job-seeker-enquiry">For Job Seekers: Find Your Next Job <span aria-hidden="true">&rarr;</span></a></div>
     </div>
+    <div class="hero__form" id="enquire"><form class="hform" id="home-form" data-subject="AARVIKO recruitment enquiry" data-source="Recruitment page: quick enquiry" novalidate aria-labelledby="hform-t">
+        <h2 id="hform-t">Talk to our team</h2>
+        <p class="hform__sub">Share your details and AARVIKO will get back to you.</p>
+        <label class="fld"><span>Full name <i aria-label="required">*</i></span><input name="name" type="text" autocomplete="name" required></label>
+        <label class="fld"><span>Email ID <i aria-label="required">*</i></span><input name="email" type="email" autocomplete="email" inputmode="email" required></label>
+        <label class="fld"><span>Phone number <i aria-label="required">*</i></span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" required></label>
+        <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        <button type="submit" class="btn btn--red hform__go">Submit</button>
+        <p class="hform__err" id="home-err" role="alert"></p>
+        <div class="hform__done" role="status" aria-live="polite"><h3>Thank you.</h3><p>We have received your details and our team will contact you soon.</p></div>
+      </form></div>
   </div>
 </section>
 
