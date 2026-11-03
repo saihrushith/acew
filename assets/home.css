@@ -199,3 +199,27 @@ h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.2; font-weight: 700; colo
 .hform__ok { padding: 22px; border-radius: 14px; background: var(--blue-50); border: 1px solid var(--blue-200); }
 .hform__ok[hidden] { display: none; }
 .nav__links a[aria-current="page"] { color: var(--blue); background: var(--blue-50); }
+/* ===== full-screen hero + mobile sheet ===== */
+.hero { display: flex; align-items: center; min-height: calc(100vh - 77px); min-height: calc(100svh - 77px); }
+.hero__in { width: min(1500px, 100% - 56px); }
+.hero .wrap { margin-inline: auto; }
+/* quick action bar and enquiry sheet on phones, like the visa page */
+.mbar, .sheet-overlay, .hform__close { display: none; }
+@media (max-width: 767px) {
+  .hero { min-height: calc(100vh - 67px); min-height: calc(100svh - 67px); padding: 28px 0 90px; }
+  body { padding-bottom: 76px; }
+  .mbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: flex; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: #fff; border-top: 3px solid #21409a; box-shadow: 0 -8px 24px -12px rgba(11, 27, 51, .35); }
+  .mbar a, .mbar button { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 16px; border-radius: 12px; font: 700 15px "Montserrat", system-ui, sans-serif; text-decoration: none; cursor: pointer; }
+  .mbar__main { flex: 1; border: 0; background: #ee1b24; color: #fff; }
+  .mbar__call { border: 2px solid #21409a; background: #fff; color: #21409a; }
+  .mbar__wa { border: 0; background: #1f7a3d; color: #fff; }
+  .hero__form { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; max-height: 90vh; overflow-y: auto; transform: translateY(110%); visibility: hidden; transition: transform .35s cubic-bezier(.22, 1, .36, 1), visibility 0s .35s; }
+  .hero__form.is-open { transform: none; visibility: visible; transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+  .hero__form .hform { position: relative; border-radius: 22px 22px 0 0; padding-top: 28px; }
+  .hero__form .hform::before { content: ""; position: absolute; top: 10px; left: 50%; width: 44px; height: 4px; margin-left: -22px; border-radius: 2px; background: #c9d6e8; }
+  .hform__close { position: absolute; top: 12px; right: 12px; display: grid; place-items: center; width: 38px; height: 38px; border: 0; border-radius: 50%; background: #f3f6fb; color: #21409a; font-size: 24px; line-height: 1; cursor: pointer; }
+  .sheet-overlay { position: fixed; inset: 0; z-index: 95; display: block; background: rgba(10, 20, 50, .55); opacity: 0; pointer-events: none; transition: opacity .3s; }
+  body.sheet-open { overflow: hidden; }
+  body.sheet-open .sheet-overlay { opacity: 1; pointer-events: auto; }
+  body.sheet-open .mbar { visibility: hidden; }
+}

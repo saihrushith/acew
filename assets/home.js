@@ -89,3 +89,21 @@
     if (/[?&]registered=1/.test(location.search)) { sf.hidden = true; var ok = document.getElementById('seeker-ok'); if (ok) ok.hidden = false; }
   }
 })();
+
+/* mobile enquiry sheet */
+(function () {
+  var wrap = document.querySelector('.hero__form');
+  if (!wrap) return;
+  var mq = window.matchMedia('(max-width: 767px)'), ov = document.createElement('div'), last = null;
+  ov.className = 'sheet-overlay'; document.body.appendChild(ov);
+  function open() { last = document.activeElement; wrap.classList.add('is-open'); document.body.classList.add('sheet-open'); var f = wrap.querySelector('input'); if (f) setTimeout(function () { f.focus(); }, 380); }
+  function close() { wrap.classList.remove('is-open'); document.body.classList.remove('sheet-open'); if (last && last.focus) last.focus(); }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-sheet], a[href="#enquire"]');
+    if (t && mq.matches) { e.preventDefault(); open(); return; }
+    if (e.target === ov || e.target.closest('.hform__close')) close();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  var onChange = function () { if (!mq.matches) close(); };
+  if (mq.addEventListener) mq.addEventListener('change', onChange); else mq.addListener(onChange);
+})();

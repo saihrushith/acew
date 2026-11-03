@@ -1,7 +1,7 @@
 /* AARVIKO shared header (used on the visa page so it matches Home and Recruitment) */
 .topbar, header.nav#nav, #menu.menu { display: none !important; }
 .ah { position: sticky; top: 0; z-index: 60; background: #fff; border-bottom: 1px solid #e1e7f0; box-shadow: 0 6px 20px -16px rgba(11, 27, 51, .4); font-family: "Montserrat", system-ui, sans-serif; }
-.ah__in { width: min(1180px, 100% - 32px); margin-inline: auto; display: flex; align-items: center; gap: 18px; min-height: 76px; }
+.ah__in { width: min(1500px, 100% - 56px); margin-inline: auto; display: flex; align-items: center; gap: 18px; min-height: 76px; }
 .ah__brand { display: inline-block; margin-right: auto; }
 .ah__brand img { display: block; height: 52px; width: auto; }
 .ah__links { display: flex; align-items: center; gap: 2px; }
