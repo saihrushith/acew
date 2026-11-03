@@ -1,0 +1,14 @@
+AARVIKO — WEBSITE UPLOAD GUIDE (sprintoverseas.com)
+============================================================
+1. Hostinger hPanel -> Files -> File Manager -> public_html
+2. DELETE old site files (index.html, _next/, assets/, 404.html, .htaccess)
+3. Upload aarviko-final.zip -> right-click -> Extract
+4. Enable SSL: hPanel -> Security -> SSL -> Install + Force HTTPS
+5. Contact form: submit once to activate FormSubmit (arrives at springoverseas22@gmail.com)
+6. After any edit: press Ctrl+Shift+R (hard refresh) to bypass browser cache
+
+Contents: index.html (homepage), 404.html, .htaccess, robots.txt, sitemap.xml,
+assets/ (images, logo), assets/site/ (site.css, app.js, world-dots.svg).
+No build step and no third-party scripts; fonts load from Google Fonts.
+After editing site.css / app.js, bump the ?v= number on their
+<link>/<script> tags in index.html so visitors get the new version.
