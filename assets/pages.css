@@ -1,0 +1,51 @@
+/* AARVIKO inner pages: about, contact, careers */
+.hero--short { min-height: 0; padding: clamp(44px, 6vw, 80px) 0; }
+.hero--short .hero__in--one { grid-template-columns: minmax(0, 880px); }
+.hero--short .hero__copy > p:not(.kicker) { color: #e6edfb; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.contact { align-items: start; }
+.clist { display: grid; gap: 16px; margin: 20px 0 22px; padding: 0; list-style: none; }
+.clist li { display: grid; gap: 2px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.clist__k { font: 700 12.5px var(--f-d); letter-spacing: .08em; text-transform: uppercase; color: var(--red); }
+.clist a { font-weight: 600; color: var(--blue); text-decoration: none; } .clist a:hover { text-decoration: underline; }
+/* job portal */
+.jsearch { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 18px; margin-bottom: 22px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.jsearch input { width: 100%; padding: 12px 20px; border: 1px solid #c9d6e8; border-radius: 999px; font: 400 16px var(--f-b); color: var(--ink); }
+.jsearch input:focus { outline: 0; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(33, 64, 154, .15); }
+.jsearch .btn, .jfilters .btn { border-radius: 999px; }
+.jlayout { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; }
+.jfilters { display: grid; gap: 4px; padding: 22px; }
+.jfilters .fld > span { font: 600 18px var(--f-d); color: var(--blue); }
+.jfilters .btn { width: 100%; margin-top: 6px; }
+.btn--outline { background: #fff; color: var(--blue); border-color: var(--blue); } .btn--outline:hover { background: var(--blue-50); }
+.jcount { margin: 0 0 12px; text-align: right; font: 700 20px var(--f-d); color: var(--blue); }
+.jtable-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+.jtable { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+.jtable thead th { padding: 14px 16px; background: var(--blue); color: #fff; text-align: left; font: 700 15px var(--f-d); white-space: nowrap; }
+.jtable td, .jtable tbody th { padding: 14px 16px; text-align: left; border-top: 1px solid var(--line); }
+.jtable tbody tr:nth-child(odd) { background: #f3f6fb; }
+.jtable tbody th { font: 700 15.5px var(--f-d); color: var(--blue); }
+.jtable tbody tr[hidden] { display: none; }
+.apply { padding: 8px 18px; border: 2px solid var(--red); border-radius: 999px; background: #fff; color: var(--red); font: 700 14px var(--f-d); cursor: pointer; transition: background-color .2s, color .2s; }
+.apply:hover { background: var(--red); color: #fff; }
+.jnone { padding: 22px; text-align: center; color: #4a5b74; }
+.jthanks { margin-bottom: 16px; padding: 20px; border-radius: 14px; background: var(--blue-50); border: 1px solid var(--blue-200); }
+.jthanks[hidden], .jnone[hidden] { display: none; }
+.jthanks h3 { font: 700 20px var(--f-d); color: var(--blue); }
+@media (max-width: 900px) { .jlayout { grid-template-columns: 1fr; } .jsearch { grid-template-columns: 1fr; } .jcount { text-align: left; } }
+@media (max-width: 720px) {
+  .jtable thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .jtable, .jtable tbody, .jtable tr, .jtable td, .jtable tbody th { display: block; }
+  .jtable tbody tr { margin-bottom: 14px; padding: 6px 0; border: 1px solid var(--line); border-radius: 14px; background: #fff !important; }
+  .jtable td, .jtable tbody th { display: flex; justify-content: space-between; gap: 16px; padding: 9px 16px; border-top: 0; text-align: right; }
+  .jtable td::before, .jtable tbody th::before { content: attr(data-label); font: 700 13px var(--f-d); color: #4a5b74; text-align: left; }
+  .jtable tbody th { font-size: 16px; }
+}
+/* apply popup */
+.rmodal { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: 16px; background: rgba(10, 20, 50, .6); overflow-y: auto; }
+.rmodal[hidden] { display: none; }
+.rmodal__box { position: relative; width: min(600px, 100%); max-height: calc(100vh - 32px); overflow-y: auto; padding: clamp(22px, 3vw, 34px); border-radius: 22px; background: #fff; }
+.rmodal__x { position: absolute; top: 12px; right: 14px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: var(--blue-50); color: var(--blue); font-size: 24px; cursor: pointer; }
+.rmodal h2 { margin: 4px 0 8px; font: 700 clamp(22px, 2.4vw, 26px)/1.25 var(--f-d); color: var(--blue); }
+.rmodal__p { margin-bottom: 16px; font-size: 15px; color: #4a5b74; }
+body.modal-open { overflow: hidden; }

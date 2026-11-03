@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/suma@sprintoverseas.com';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/suma@aarviko.com';
   var SVGNS = 'http://www.w3.org/2000/svg';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -15,7 +15,7 @@
 
   /* ---------- Conversion events for Google Tag Manager / Google Ads / Meta Pixel ---------- */
   window.dataLayer = window.dataLayer || [];
-  function track(name, extra) { var e = { event: name }; for (var k in (extra || {})) e[k] = extra[k]; window.dataLayer.push(e); }
+  function track(name, extra) { var e = { event: name }; for (var k in (extra || {})) e[k] = extra[k]; window.dataLayer.push(e); if (window.gtag) window.gtag('event', name, extra || {}); }
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('a[href]');
     if (!a) return;

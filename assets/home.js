@@ -1,8 +1,8 @@
 (function () {
   'use strict';
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/suma@sprintoverseas.com';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/suma@aarviko.com';
   window.dataLayer = window.dataLayer || [];
-  function track(name, extra) { var e = { event: name }; for (var k in (extra || {})) e[k] = extra[k]; window.dataLayer.push(e); }
+  function track(name, extra) { var e = { event: name }; for (var k in (extra || {})) e[k] = extra[k]; window.dataLayer.push(e); if (window.gtag) window.gtag('event', name, extra || {}); }
 
   // mobile menu
   var burger = document.getElementById('burger'), links = document.getElementById('nav-links');
