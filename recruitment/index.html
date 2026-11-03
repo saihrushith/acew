@@ -1652,5 +1652,16 @@ _Submitted via Aarviko Recruitment_`;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<App />);
   </script>
+<script data-open-from-hash>
+// links from the home page: recruitment/#hire opens the hiring form, recruitment/#resume opens the candidate form
+(function () {
+  var t = { '#hire': 'Submit hiring requirement', '#resume': 'Submit Profile for Hyderabad roles' }[location.hash];
+  if (!t) return;
+  var tries = 0, iv = setInterval(function () {
+    var b = document.querySelector('button[title="' + t + '"]');
+    if (b) { clearInterval(iv); b.click(); } else if (++tries > 80) clearInterval(iv);
+  }, 150);
+})();
+</script>
 </body>
 </html>
