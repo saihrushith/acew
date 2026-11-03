@@ -75,6 +75,23 @@
     });
   }
 
+  var vf = document.getElementById('visa-form');
+  if (vf) {
+    clearOnInput(vf); var verr = vf.querySelector('.hform__err');
+    vf.addEventListener('submit', function (ev) {
+      ev.preventDefault(); verr.textContent = '';
+      var bad = validate(vf); if (bad) { bad.focus(); verr.textContent = 'Please complete the highlighted fields.'; return; }
+      var fd = new FormData(vf); if (fd.get('website')) { vf.classList.add('is-done'); return; }
+      var btn = vf.querySelector('button[type="submit"]'); btn.disabled = true;
+      var data = { _subject: 'AARVIKO visa enquiry - ' + fd.get('name'), _template: 'table', _captcha: 'false', Source: 'Visa Services page: visa enquiry' };
+      fd.forEach(function (v, k) { if (k !== 'website') data[k] = v || '-'; });
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { if (!r.ok) throw new Error('send failed'); vf.classList.add('is-done'); vf.reset(); track('generate_lead', { form_position: 'visa_enquiry' }); })
+        .catch(function () { verr.textContent = 'Something went wrong. Please try again or WhatsApp us at +91 95022 90703.'; })
+        .then(function () { btn.disabled = false; });
+    });
+  }
+
   var sf = document.getElementById('seeker-form');
   if (sf) {
     clearOnInput(sf); var serr = sf.querySelector('.hform__err');
