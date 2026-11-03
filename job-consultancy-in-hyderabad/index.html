@@ -166,7 +166,7 @@
 <main id="main">
 
 <section class="hero hero--rec" id="home" aria-labelledby="hero-h">
-  <div class="wrap hero__in hero__in--one">
+  <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="kicker">AARVIKO Job Seekers &bull; Hyderabad</p>
       <h1 id="hero-h">Your Skills Deserve the Right Opportunity. <span class="gold">Let's Find Your Next Job!</span></h1>
@@ -176,6 +176,18 @@
       <p class="hero__line">Your career journey starts with the right opportunity.</p>
       <div class="hero__cta"><a class="btn btn--red" href="../jobs/">Find Your Next Job <span aria-hidden="true">&rarr;</span></a><a class="btn btn--ghost" href="#register">Submit Your Resume <span aria-hidden="true">&rarr;</span></a></div>
     </div>
+    <div class="hero__form" id="enquire"><form class="hform" id="home-form" data-subject="AARVIKO job seeker enquiry" data-source="Job Seekers page: quick enquiry" novalidate aria-labelledby="hform-t">
+          <button type="button" class="hform__close" aria-label="Close form">&times;</button>
+        <h2 id="hform-t">Looking for a job?</h2>
+        <p class="hform__sub">Share your details and our team will get back to you.</p>
+        <label class="fld"><span>Full name <i aria-label="required">*</i></span><input name="name" type="text" autocomplete="name" required></label>
+        <label class="fld"><span>Email ID <i aria-label="required">*</i></span><input name="email" type="email" autocomplete="email" inputmode="email" required></label>
+        <label class="fld"><span>Phone number <i aria-label="required">*</i></span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" required></label>
+        <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        <button type="submit" class="btn btn--red hform__go">Submit</button>
+        <p class="hform__err" id="home-err" role="alert"></p>
+        <div class="hform__done" role="status" aria-live="polite"><h3>Thank you.</h3><p>We have received your details and our team will contact you soon.</p></div>
+      </form></div>
   </div>
 </section>
 
@@ -302,6 +314,11 @@
     <p>&copy; 2026 AARVIKO. All rights reserved. Powered By VH GLOBAL TECHNOLOGIES PVT LTD</p>
   </div>
 </footer>
+<nav class="mbar" aria-label="Quick actions">
+  <button type="button" class="mbar__main" data-sheet>Enquire Now</button>
+  <a href="tel:+919502290703" class="mbar__call">Call</a>
+  <a href="https://wa.me/919502290703?text=Hi%20AARVIKO%2C%20I%20would%20like%20to%20talk%20to%20your%20team." class="mbar__wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+</nav>
 <script src="../assets/home.js?v=320"></script>
 </body>
 </html>
