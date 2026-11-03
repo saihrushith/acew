@@ -110,7 +110,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.2; font-weight: 700; colo
 .audience { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 @media (max-width: 760px) { .audience { grid-template-columns: 1fr; } }
 .note { margin-top: 22px; padding: 14px 18px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font-size: 14.5px; }
-.card--feature { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 30px 60px -28px rgba(33, 64, 154, .7); }
+.card--feature { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 1px 2px rgba(11, 27, 51, .12), 0 24px 44px -26px rgba(11, 27, 51, .5); }
 .card--feature h3 { margin-bottom: 14px; font-size: 22px; color: #fff; }
 .card--feature p { color: #e6edfb; } .card--feature strong { color: #fff; }
 .card--feature .ticks { margin: 0 0 20px; }
