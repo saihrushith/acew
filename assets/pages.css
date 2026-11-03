@@ -58,3 +58,12 @@ body.modal-open { overflow: hidden; }
 .cat--wide { margin-top: 22px; }
 .cta__btns--left { justify-content: flex-start; margin-top: 22px; }
 @media (max-width: 800px) { .cats { grid-template-columns: 1fr; } }
+
+/* training page */
+.ticks--cols { columns: 2; column-gap: 32px; margin: 12px 0 18px; }
+.ticks--cols li { break-inside: avoid; }
+.faq h4 { margin: 18px 0 6px; font: 700 16px var(--f-d); color: var(--red); }
+.faq h4:first-child { margin-top: 4px; }
+.hero__copy .chips { margin: 10px 0 18px; }
+.form-card textarea { width: 100%; font: inherit; padding: 12px 14px; border: 1px solid #cfd8ea; border-radius: 10px; }
+@media (max-width: 700px) { .ticks--cols { columns: 1; } }

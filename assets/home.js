@@ -145,3 +145,31 @@
     if (io) io.observe(el); else el.classList.add('is-in');
   });
 })();
+
+/* generic enquiry forms (training page) */
+(function () {
+  var FORM_ENDPOINT = (function () { var s = document.currentScript; return s && s.src ? new URL('../send.php', s.src).href : '/send.php'; })();
+  document.querySelectorAll('form.gform').forEach(function (f) {
+    var err = f.querySelector('.hform__err');
+    f.querySelectorAll('input, select, textarea').forEach(function (i) { ['input', 'change'].forEach(function (ev) { i.addEventListener(ev, function () { var w = i.closest('.fld'); if (w) w.classList.remove('is-invalid'); }); }); });
+    f.addEventListener('submit', function (ev) {
+      ev.preventDefault(); err.textContent = '';
+      var bad = null;
+      f.querySelectorAll('[required]').forEach(function (i) {
+        var ok = i.checkValidity() && String(i.value).trim() !== '';
+        var w = i.closest('.fld'); if (w) w.classList.toggle('is-invalid', !ok);
+        if (!ok && !bad) bad = i;
+      });
+      if (bad) { bad.focus(); err.textContent = 'Please complete the highlighted fields.'; return; }
+      var fd = new FormData(f);
+      if (fd.get('website')) { f.classList.add('is-done'); return; }
+      var btn = f.querySelector('button[type="submit"]'); btn.disabled = true;
+      var data = { _subject: (f.dataset.subject || 'AARVIKO enquiry') + ' - ' + (fd.get('Full Name') || ''), _template: 'table', _captcha: 'false', Source: f.dataset.source || '' };
+      fd.forEach(function (v, k) { if (k !== 'website' && String(v).trim() !== '') data[k] = v; });
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { if (!r.ok) throw new Error('send failed'); f.classList.add('is-done'); f.reset(); if (window.gtag) window.gtag('event', 'generate_lead', { form_position: f.dataset.event || 'training' }); })
+        .catch(function () { err.textContent = 'Something went wrong. Please try again or WhatsApp us at +91 95022 90703.'; })
+        .then(function () { btn.disabled = false; });
+    });
+  });
+})();
