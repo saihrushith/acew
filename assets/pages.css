@@ -67,3 +67,9 @@ body.modal-open { overflow: hidden; }
 .hero__copy .chips { margin: 10px 0 18px; }
 .form-card textarea { width: 100%; font: inherit; padding: 12px 14px; border: 1px solid #cfd8ea; border-radius: 10px; }
 @media (max-width: 700px) { .ticks--cols { columns: 1; } }
+
+.benefits { width: 100%; border-collapse: separate; border-spacing: 0; margin: 10px 0 20px; font-size: 15px; }
+.benefits td { padding: 9px 12px; border: 1px solid rgba(255,255,255,.22); color: #fff; vertical-align: top; }
+.benefits tr:nth-child(odd) td { background: rgba(255,255,255,.07); }
+.benefits .tk { display: inline-block; margin-right: 8px; color: #ff6b72; font-weight: 800; }
+@media (max-width: 600px) { .benefits td { display: block; border-top: 0; } .benefits tr:first-child td:first-child { border-top: 1px solid rgba(255,255,255,.22); } }
