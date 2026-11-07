@@ -141,12 +141,13 @@ svg { width: 1em; height: 1em; flex: none; }
 .sec__lede { max-width: 440px; margin-top: 18px; color: var(--muted); font-size: 18px; }
 
 /* ---------- HERO (split callback layout) ---------- */
-.hero { position: relative; padding: 36px 0 56px; overflow: hidden; color: #fff; font-family: "Open Sans", "Segoe UI", system-ui, sans-serif;
+.hero { position: relative; isolation: isolate; padding: 36px 0 56px; overflow: hidden; color: #fff; font-family: "Open Sans", "Segoe UI", system-ui, sans-serif;
   background-color: #21409a; background-image: linear-gradient(135deg, #21409a 0, #21409a 70%, #21409a 100%); }
 .hero__bg { position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(100deg, rgba(12,24,70,.50) 0%, rgba(20,40,110,.22) 55%, rgba(20,40,110,0) 100%), var(--hero-img) center / cover no-repeat; }
-.hero__content { background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.22); border-radius: 22px; box-shadow: 0 24px 60px rgba(8,18,60,.35); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding: clamp(22px, 3vw, 40px); }
-.hero__wrap { position: relative; max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+.hero__content { padding: 0; }
+.hero::after { content: ""; position: absolute; inset: clamp(12px, 2vw, 28px); z-index: 0; pointer-events: none; border-radius: clamp(18px, 2.4vw, 32px); border: 1px solid rgba(255,255,255,.4); background: linear-gradient(150deg, rgba(255,255,255,.2), rgba(255,255,255,.07)); -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2); box-shadow: 0 30px 80px rgba(4,10,40,.35), inset 0 1px 0 rgba(255,255,255,.3); }
+.hero__wrap { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 0 24px; }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) 480px; gap: 48px; align-items: center; }
 .hero__content { min-width: 0; }
 .hero__badge { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 5.6px 14.4px; border-radius: 999px; background: rgba(255, 255, 255, .15); border: 1px solid rgba(255, 255, 255, .3); font: 700 14.5px/22px "Open Sans", sans-serif; }
