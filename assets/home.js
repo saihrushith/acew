@@ -7,9 +7,11 @@
   // mobile menu
   var burger = document.getElementById('burger'), links = document.getElementById('nav-links');
   function setMenu(open) { links.classList.toggle('open', open); burger.setAttribute('aria-expanded', String(open)); burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
+  if (burger && links) {
   burger.addEventListener('click', function () { setMenu(!links.classList.contains('open')); });
   links.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  }
 
   // click tracking
   document.addEventListener('click', function (ev) {
