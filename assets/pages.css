@@ -93,7 +93,7 @@ body.modal-open { overflow: hidden; }
 .fc__s { color: rgba(255,255,255,.8); font-size: 14px; margin-top: 6px; }
 .fc__b .fc__t { margin: 0; }
 .fc__d { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.88); }
-.fc__go { font: 700 14px var(--f-d); color: #ff8d93; margin-top: 6px; }
+.fc__go { font: 700 14px var(--f-d); color: #ff8d93; margin-top: 10px; }
 @media (prefers-reduced-motion: reduce) { .fc__in { transition: none; } }
 @media (max-width: 1000px) { .hub__grid { grid-template-columns: repeat(2, 1fr); } .hub { min-height: 0; } }
 @media (max-width: 520px) { .fc { aspect-ratio: auto; min-height: 260px; } }
