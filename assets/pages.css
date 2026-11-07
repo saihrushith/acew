@@ -96,4 +96,4 @@ body.modal-open { overflow: hidden; }
 .fc__go { font: 700 14px var(--f-d); color: #ff8d93; margin-top: 10px; }
 @media (prefers-reduced-motion: reduce) { .fc__in { transition: none; } }
 @media (max-width: 1000px) { .hub__grid { grid-template-columns: repeat(2, 1fr); } .hub { min-height: 0; } }
-@media (max-width: 520px) { .fc { aspect-ratio: auto; min-height: 260px; } }
+@media (max-width: 700px) { .hub__grid { grid-template-columns: 1fr; gap: 16px; } .fc { aspect-ratio: auto; height: 330px; min-height: 0; } .hub { padding: 28px 0; } .hub__wrap { width: calc(100% - 64px); } .hub__logo img { height: 38px; } .fc__img { flex: none; height: 170px; margin-bottom: 14px; } .fc__n { margin-top: 0; } }
